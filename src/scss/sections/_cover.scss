@@ -1,0 +1,39 @@
+.invitation-container {
+  background-color: rgb(188, 177, 167);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  overflow: hidden;
+
+  .cover-section {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    @media(min-width: 1024px) {
+      gap: 1.5rem;
+    }
+    h5 {
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      margin: 0;
+      @media(min-width: 1024px) {
+        font-size: 1.1rem;
+        letter-spacing: 4px;
+      }
+    }
+    p {
+      font-size: 1rem;
+      letter-spacing: 1px;
+      margin: 0;
+      @media(min-width: 1024px) {
+        font-size: 1.4rem;
+        letter-spacing: 3px;
+      }
+    }
+  }
+}

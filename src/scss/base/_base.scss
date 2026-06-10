@@ -3,8 +3,53 @@ body {
   margin: 0;
   background-color: $color-ivory;
   color: $color-charcoal;
+  overflow-x: hidden;
+  font-family: $font-en-body, $font-zh-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.title {
-  color:$color-slate-blue;
+h1,
+h2,
+h3,
+h4,
+h6 {
+  font-family: $font-en-serif, $font-zh-serif;
+  color: $color-slate-blue;
+  margin: 0;
+}
+
+h5,
+p {
+  font-family: $font-en-serif, $font-zh-serif;
+  color: $color-charcoal;
+  margin: 0;
+}
+
+h1 {
+  font-size: 1.8rem;
+
+  @media (min-width: 768px) {
+    font-size: 2.5rem;
+  }
+
+  @media(min-width:1024px) {
+    font-size: 3.5rem;
+  }
+}
+
+p,h5 {
+  font-size: 1.125rem;
+  /* 手機端：稍微大於內文，約 18px */
+
+  @media (min-width: 768px) {
+    font-size: 1.25rem;
+    /* 平板端：約 20px */
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 1.5rem;
+    /* 桌機端：約 24px */
+  }
 }
