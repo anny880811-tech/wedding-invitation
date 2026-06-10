@@ -22,13 +22,12 @@ h6 {
 
 h5,
 p {
-  font-family: $font-en-serif, $font-zh-serif;
   color: $color-charcoal;
   margin: 0;
 }
 
 h1 {
-  font-size: 1.8rem;
+  font-size: 2rem;
 
   @media (min-width: 768px) {
     font-size: 2.5rem;
@@ -39,7 +38,7 @@ h1 {
   }
 }
 
-p,h5 {
+h5 {
   font-size: 1.125rem;
   /* 手機端：稍微大於內文，約 18px */
 
@@ -52,4 +51,69 @@ p,h5 {
     font-size: 1.5rem;
     /* 桌機端：約 24px */
   }
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.8;
+  font-family: $font-zh-sans;
+}
+
+.section-title {
+  color: $color-burgundy;
+  font-family: $font-en-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.section-header {
+  position: relative;
+  font-family: $font-zh-serif;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+
+.section-heading__divider {
+  position: relative;
+
+  width: 56px;
+  height: 1px;
+
+  margin: 0 auto 0;
+
+  background: rgba($color-burgundy, 0.5);
+}
+
+.section-heading__divider::before,
+.section-heading__divider::after {
+  content: "";
+
+  position: absolute;
+  top: 50%;
+
+  width: 4px;
+  height: 4px;
+
+  border-radius: 50%;
+
+  background: rgba($color-burgundy, 0.5);
+
+  transform: translateY(-50%);
+}
+
+.section-heading__divider::before {
+  left: -8px;
+}
+
+.section-heading__divider::after {
+  right: -8px;
+}
+
+.section-content {
+  margin-top: 1rem;
+  text-align: center;
 }
