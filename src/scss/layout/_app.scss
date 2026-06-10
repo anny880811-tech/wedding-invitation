@@ -1,0 +1,20 @@
+@media(min-width:1024px) {
+  .invitation-container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .cover-section {
+    flex: 1;
+  }
+
+  .content-section {
+    flex: 1;
+    overflow-y: auto;
+  }
+}
+
+.app {
+  min-height: 100vh;
+}
