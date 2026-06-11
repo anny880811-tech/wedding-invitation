@@ -4,7 +4,7 @@ const WeddingHospitality = () => {
     {
       icon: <BedDouble size={25} />,
       title: '住宿安排',
-      items: [
+      details: [
         '3天2夜住宿',
         '1/23 - 1/25',
       ],
@@ -12,7 +12,7 @@ const WeddingHospitality = () => {
     {
       icon: <Utensils size={25} />,
       title: '餐食安排',
-      items: [
+      details: [
         '1/23 晚餐',
         '1/24 早餐、晚餐',
         '1/25 早餐',
@@ -21,7 +21,7 @@ const WeddingHospitality = () => {
     {
       icon: <i className="bi bi-car-front"></i>,
       title: '機場接送',
-      items: [
+      details: [
         '接機 1/22、1/23',
         '送機 1/25、1/26',
       ],
@@ -29,7 +29,7 @@ const WeddingHospitality = () => {
     {
       icon: <i className="bi bi-airplane"></i>,
       title: '其他時間',
-      items: [
+      details: [
         '若於其他日期抵達或離開峇里島，請自行安排交通',
       ],
     },
@@ -49,9 +49,9 @@ const WeddingHospitality = () => {
             </div>
             <div className="card-content">
               <h3 className="card-title">{item.title}</h3>
-              {item.items.map((note, i) => {
+              {item.details.map((detail, i) => {
                 return (<div key={i}>
-                  <p className="card-primary">{note}</p>
+                  <p className="card-primary">{detail}</p>
                 </div>)
               })}
             </div>
