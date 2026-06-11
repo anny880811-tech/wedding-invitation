@@ -1,0 +1,49 @@
+.hospitality-custom {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 2rem 2rem 2rem 2rem;
+  box-sizing: border-box;
+
+  .section-content {
+    margin-top: 2rem;
+    width: 100%;
+  }
+
+  .infoCard {
+    padding: 1.5rem 3rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    background-color: rgb(250, 249, 247);
+    border-radius: 2rem;
+    box-shadow: 3px 5px 10px rgba(109, 128, 138, 0.08);
+
+    h3,
+    p {
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    .icon-circle {
+      background-color: $color-sage;
+    }
+
+    .card-icon {
+      width: 65px;
+      flex-shrink: 0;
+      margin-right: 1.5rem;
+    }
+
+    .card-content {
+      flex: 1;
+      text-align: start;
+
+      .card-title {
+        margin-bottom: 0.3rem;
+      }
+    }
+  }
+}
