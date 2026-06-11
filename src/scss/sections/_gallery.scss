@@ -1,0 +1,48 @@
+.gallery-custom {
+  width: 100%;
+  padding: 3rem 2rem 2rem 2rem;
+  box-sizing: border-box;
+
+  .photo-group {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+
+    .photo-s-group {
+      gap: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+
+      .photo-s-container {
+        flex: 1;
+        aspect-ratio: 1/1;
+        border-radius: 1.5rem;
+        background-color: rgb(188, 177, 167);
+
+        .photo-s {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: opacity 0.3s ease;
+        }
+      }
+    }
+
+
+    .photo-l-container {
+      width: 100%;
+      aspect-ratio: 1.8/1;
+      border-radius: 1.5rem;
+      background-color: rgb(188, 177, 167);
+
+      .photo-l {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: opacity 0.3s ease;
+      }
+    }
+  }
+}

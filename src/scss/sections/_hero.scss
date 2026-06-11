@@ -1,19 +1,16 @@
-.content-section {
-  position: relative;
+.hero-custom {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   width: 100%;
   box-sizing: border-box;
-
-  overflow-y: auto;
+  min-height: 100vh;
   overflow-x: hidden;
-  height: 100vh;
-  padding: 3rem 1rem 2rem 1rem;
+  padding: 0rem 1rem 1rem 1rem;
 
   @media(min-width: 1024px) {
-    height: 100vh;
-    overflow-y: auto;
+    padding: 4rem 1rem 2rem 1rem;
   }
 
   .img-container {
