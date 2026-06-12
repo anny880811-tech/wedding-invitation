@@ -1,0 +1,22 @@
+.dressGuide-custom {
+  width: 100%;
+  padding: 2rem 2rem 2rem 2rem;
+  box-sizing: border-box;
+
+  .color-container {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    font-family: $font-zh-sans;
+
+    .colorChart {
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      margin-bottom: 0.5rem;
+      box-shadow: 3px 3px 8px rgba(49, 51, 44, 0.5);
+    }
+  }
+}
