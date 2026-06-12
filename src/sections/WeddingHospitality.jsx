@@ -1,8 +1,8 @@
-import { BedDouble, Utensils } from "lucide-react"
+import { BedDouble, Utensils,Plane } from "lucide-react"
 const WeddingHospitality = () => {
   const hospitalityData = [
     {
-      icon: <BedDouble size={25} />,
+      icon: <BedDouble size={28} />,
       title: '住宿安排',
       details: [
         '3天2夜住宿',
@@ -27,7 +27,7 @@ const WeddingHospitality = () => {
       ],
     },
     {
-      icon: <i className="bi bi-airplane"></i>,
+      icon: <Plane size={28} />,
       title: '其他時間',
       details: [
         '若於其他日期抵達或離開峇里島，請自行安排交通',

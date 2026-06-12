@@ -1,0 +1,45 @@
+.travelGuide-custom {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 2rem 2rem 2rem 2rem;
+  box-sizing: border-box;
+  background-color: rgba($color-mist-blue, 0.3);
+
+  .card-container {
+    text-align: start;
+    margin-top: 2rem;
+    width: 100%;
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      text-align: start;
+      width: 100%;
+      height: 5rem;
+      border-radius: 1rem;
+      border: none;
+      box-shadow: 3px 5px 10px rgba(109, 128, 138, 0.08);
+      background-color: $color-ivory;
+      box-sizing: border-box;
+
+      .card-group {
+        text-align: center;
+        .header-group {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .lucide {
+          color: $color-slate-blue;
+          margin-right: 0.5rem;
+        }
+      }
+    }
+  }
+}
