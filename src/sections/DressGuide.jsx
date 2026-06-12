@@ -38,6 +38,17 @@ const DressGuide = () => {
         })}
       </div>
     </div >
+    <div className="note-custom">
+      <div className="section-title">FROM OUR HEARTS</div>
+      <h3 className="section-header">我們的心意</h3>
+      <div className="section-heading__divider"></div>
+      <div className="section-content">
+        <p>感謝各位願意舟車勞頓參與我們的婚禮，</p>
+        <p>為了讓大家更輕鬆自在地享受這趟旅程，</p>
+        <p>我們負擔婚禮３天的住宿與部分餐食，</p>
+        <p>也不收禮金。</p>
+      </div>
+    </div>
   </>)
 }
 

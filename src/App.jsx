@@ -7,6 +7,7 @@ import WeddingHospitality from "./sections/WeddingHospitality";
 import RSVP from "./sections/RSVP";
 import TravelGuide from "./sections/TravelGuide";
 import DressGuide from "./sections/DressGuide";
+import Footer from "./sections/Footer";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <RSVP />
           <TravelGuide />
           <DressGuide />
+          <Footer />
         </div>
       </div>
     </>

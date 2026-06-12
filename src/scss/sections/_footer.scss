@@ -1,0 +1,31 @@
+.footer-container {
+  width: 100%;
+  padding: 2rem 2rem 0rem 2rem;
+  height: 100vh;
+  flex-shrink: 0;
+  position: relative;
+  background-image:
+    linear-gradient(to bottom, $color-ivory 0%, rgba($color-ivory, 0) 15%),
+    linear-gradient(rgb(203, 197, 192), rgb(203, 197, 192));
+  // background-image: 
+  // linear-gradient(to bottom, $color-ivory 0%, rgba($color-ivory, 0) 15%),
+  // url('https://images.pexels.com/photos/5729156/pexels-photo-5729156.jpeg');
+  background-size: cover;
+  background-position: center;
+
+  .footer-section {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1rem;
+    text-align: center;
+    background-color: $color-burgundy;
+
+    h3,
+    p {
+      color: $color-ivory;
+    }
+  }
+}
