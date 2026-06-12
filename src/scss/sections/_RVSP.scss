@@ -21,13 +21,27 @@
       margin-top: 1.2rem;
       text-align: start;
 
+      // 統一所有輸入框高度
+      .react-select__control {
+        min-height: 32px !important;
+        height: 32px !important;
+      }
+
+      .react-select__value-container {
+        padding: 0 0.5rem;
+      }
+
+      .react-select__indicators {
+        height: 32px;
+      }
+
       .flight-group {
         margin-top: 0.3rem;
         display: flex;
         justify-content: space-between;
         gap: 1rem;
 
-        div {
+        .form-field {
           display: flex;
           flex: 1;
           flex-direction: column;
@@ -59,7 +73,7 @@
             margin: 0;
             height: 1rem;
             width: 1rem;
-             accent-color: $color-burgundy;
+            accent-color: $color-burgundy;
           }
 
           label {
@@ -69,11 +83,43 @@
         }
 
       }
-      input{
+
+      input {
         margin-top: 0.3rem;
         box-sizing: border-box;
         padding: 1rem;
       }
     }
   }
+}
+
+.react-datepicker {
+  border-radius: 8px;
+  border: 1px solid rgba($color-burgundy, 0.2);
+  font-family: $font-zh-sans;
+  overflow: hidden; // 讓圓角生效在子元素上
+
+  // 上方標題(月份/年份)
+  .react-datepicker__header {
+    background-color: rgba($color-burgundy, 0.1);
+    border-bottom: none;
+  }
+
+  // 選中的日期/時間
+  .react-datepicker__day--selected,
+  .react-datepicker__time-list-item--selected {
+    background-color: $color-burgundy !important;
+    border-radius: 4px;
+  }
+
+  // hover 效果
+  .react-datepicker__day:hover,
+  .react-datepicker__time-list-item:hover {
+    background-color: rgba($color-burgundy, 0.2);
+  }
+}
+
+// 只用 showTimeSelectOnly 時的時間清單
+.react-datepicker__time-container {
+  border-left: 1px solid rgba($color-burgundy, 0.1);
 }

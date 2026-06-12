@@ -5,12 +5,14 @@ const WeddingInfo = () => {
       title: '日期',
       value: '2027.01.23',
       description: 'Sunday',
+      illustration: '/src/assets/mist-blue03.png',
     },
     {
       icon: <i className="bi bi-clock"></i>,
       title: '時間',
       value: '17:30 Ceremony',
       description: '18:30 Reception',
+      illustration: '/src/assets/mist-blue01.png',
     },
     {
       icon: <i className="bi bi-geo-alt"></i>,
@@ -41,6 +43,9 @@ const WeddingInfo = () => {
                 查看地圖 <i className="bi bi-chevron-right"></i>
               </a>}
             </div>
+            {item.illustration && (<div className="card-illustration">
+              <img src={item.illustration} alt={item.title} />
+            </div>)}
           </div>)
         })}
       </div>

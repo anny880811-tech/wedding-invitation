@@ -1,4 +1,68 @@
+import { TextAlignCenter } from "lucide-react";
+import { useState } from "react"
+import DatePicker from "react-datepicker"
+import Select from "react-select"
+
 const RSVP = () => {
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [arrivalTime, setArrivalTime] = useState(null);
+  const [guestCount, setGuestCount] = useState(null);
+  const options = Array.from({ length: 11 }, (_, i) => ({
+    value: i,
+    label: `${i} 人`,
+  }));
+  const selectStyles = {
+    control: (base, state) => ({
+      ...base,
+      borderRadius: "8px",
+      borderColor: state.isFocused ? "rgba(128, 0, 32, 0.3)" : "rgba(128, 0, 32, 0)",
+      minHeight: "32px",
+      height: "32px",
+      backgroundColor: "#F8F4ED",
+      boxShadow: "none",
+      "&:hover": {
+        borderColor: "rgba(128, 0, 32, 0.5)",
+      },
+    }),
+    menu: (base) => ({
+      ...base,
+      backgroundColor: "#fdf6f0",
+      borderRadius: "8px",
+      overflow: "hidden",
+      marginTop: "4px",
+    }),
+    option: (base, state) => ({
+      ...base,
+      backgroundColor: state.isSelected
+        ? "#800020"
+        : state.isFocused
+          ? "rgba(128, 0, 32, 0.1)"
+          : "transparent",
+      color: state.isSelected ? "#fff" : "#333",
+      cursor: "pointer",
+    }),
+    singleValue: (base) => ({
+      ...base,
+      color: "#333",
+    }),
+    placeholder: (base) => ({
+      ...base,
+      color: "#999",
+      fontSize: "14px",  // 縮小字級
+      margin: 0,
+    }),
+    indicatorsContainer: (base) => ({
+      ...base,
+      height: "32px",
+    }),
+    valueContainer: (base) => ({
+      ...base,
+      height: "32px",
+      padding: "0 8px",
+      display: "flex",
+      alignItems: "center",
+    }),
+  };
   return (<>
     <div className="RSVP-custom">
       <div className="section-title">GUSET RECISTARTION</div>
@@ -10,26 +74,44 @@ const RSVP = () => {
         <div className="form-custom">
           <div className="form-group">
             <label htmlFor="statistics">1. 參加人數</label>
-            <select name="" id="statistics"></select>
+            <Select
+              inputId="statistics"
+              options={options}
+              value={guestCount}
+              onChange={(selected) => setGuestCount(selected)}
+              placeholder="請選擇人數"
+              styles={selectStyles}
+            />
           </div>
           <div className="form-group">
             <div>2. 抵達峇里島的時間＆航班資訊</div>
             <div className="flight-group">
-              <div>
+              <div className="form-field">
                 <label htmlFor="arrivalDate">抵達日期</label>
-                <input type="date" id="arrivalDate" />
+                <DatePicker id="arrivalDate" placeholderText=" 月 / 日 / 年" popperPlacement="bottom-start" selected={selectedDate} onChange={(date) => { setSelectedDate(date) }} />
               </div>
-              <div>
+              <div className="form-field">
                 <label htmlFor="arrivalTime">抵達時間</label>
-                <input type="time" id="arrivalTime" />
+                <DatePicker
+                  id="arrivalTime"
+                  placeholderText="--：-- --"
+                  selected={arrivalTime}
+                  onChange={(time) => setArrivalTime(time)}
+                  showTimeSelect
+                  showTimeSelectOnly
+                  timeIntervals={15}
+                  timeCaption="時間"
+                  dateFormat="hh:mm aa"
+                />
+
               </div>
             </div>
             <div className="flight-group">
-              <div>
+              <div className="form-field">
                 <label htmlFor="">航空資訊</label>
                 <input type="text" placeholder="請輸入航空公司" />
               </div>
-              <div>
+              <div className="form-field">
                 <label htmlFor="">航空編號</label>
                 <input type="text" placeholder="請輸入航空編號" />
               </div>
@@ -38,21 +120,31 @@ const RSVP = () => {
           <div className="form-group">
             <div>3. 離開峇里島的時間＆航班資訊</div>
             <div className="flight-group">
-              <div>
+              <div className="form-field">
                 <label htmlFor="departureDate">離開日期</label>
-                <input type="date" id="departureDate" />
+                <DatePicker id="departureDate" placeholderText=" 月 / 日 / 年" popperPlacement="bottom-start" selected={selectedDate} onChange={(date) => { setSelectedDate(date) }} />
               </div>
-              <div>
+              <div className="form-field">
                 <label htmlFor="departureTime">離開時間</label>
-                <input type="time" id="departureTime" />
+                <DatePicker
+                  id="departureTime"
+                  placeholderText=" --：-- --"
+                  selected={arrivalTime}
+                  onChange={(time) => setArrivalTime(time)}
+                  showTimeSelect
+                  showTimeSelectOnly
+                  timeIntervals={15}
+                  timeCaption="時間"
+                  dateFormat="hh:mm aa"
+                />
               </div>
             </div>
             <div className="flight-group">
-              <div>
+              <div className="form-field">
                 <label htmlFor="">航空資訊</label>
                 <input type="text" placeholder="請輸入航空公司" />
               </div>
-              <div>
+              <div className="form-field">
                 <label htmlFor="">航空編號</label>
                 <input type="text" placeholder="請輸入航空編號" />
               </div>

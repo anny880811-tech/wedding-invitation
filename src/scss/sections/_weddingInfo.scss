@@ -15,13 +15,27 @@
   }
 
   .infoCard {
+    position: relative;
     padding: 1rem 3rem;
     margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
     background-color: $color-ivory;
     border-radius: 2rem;
-    box-shadow: 3px 5px 10px rgba(109, 128, 138, 0.08);
+    box-shadow: 3px 5px 10px #6d808a14;
+    overflow: hidden;
+
+    .card-illustration img {
+      position: absolute;
+      right: 5%;
+      bottom: 0;
+      width: auto;
+      height: 90px;
+      display: block;
+      opacity: 0.5;
+      pointer-events: none;
+      z-index: 0;
+    }
 
     h3,
     p {
@@ -54,6 +68,7 @@
         border: none;
         border-radius: 1.6rem;
         display: inline-block;
+        white-space: nowrap;
 
         &:hover {
           background-color: #637583;
