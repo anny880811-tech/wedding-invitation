@@ -1,12 +1,9 @@
-import { TextAlignCenter } from "lucide-react";
-import { useState } from "react"
+import { useForm, Controller } from "react-hook-form"
+import { format } from "date-fns"
 import DatePicker from "react-datepicker"
 import Select from "react-select"
 
 const RSVP = () => {
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [arrivalTime, setArrivalTime] = useState(null);
-  const [guestCount, setGuestCount] = useState(null);
   const options = Array.from({ length: 11 }, (_, i) => ({
     value: i,
     label: `${i} 人`,
@@ -63,6 +60,30 @@ const RSVP = () => {
       alignItems: "center",
     }),
   };
+  const formatDate = (date) => date ? format(date, "MM/dd/yyyy") : ""
+  const formatTime = (date) => date ? format(date, "hh:mm a") : ""
+  const {
+    register,
+    handleSubmit,
+    control,
+    watch,
+    formState: { errors },
+  } = useForm()
+  const onSubmit = (data) => {
+    const formattedData = {
+      ...data,
+      arrivalDate: formatDate(data.arrivalDate),
+      arrivalTime: formatTime(data.arrivalTime),
+      departureDate: formatDate(data.departureDate),
+      departureTime: formatTime(data.departureTime),
+      travelPlanDate: formatDate(data.travelPlanDate),
+    }
+    console.log(formattedData)
+  }
+  const allergyStatus = watch('allergyStatus')
+  const regularTravelStatus = watch('regularTravelStatus')
+  const needStatus = watch('needStatus')
+
   return (<>
     <div className="RSVP-custom">
       <div className="section-title">GUSET RECISTARTION</div>
@@ -71,133 +92,226 @@ const RSVP = () => {
       <div className="form-container">
         <p>為了讓我們更好的安排一切，</p>
         <p>請協助填寫以下資料。</p>
-        <div className="form-custom">
-          <div className="form-group">
-            <label htmlFor="statistics">1. 參加人數</label>
-            <Select
-              inputId="statistics"
-              options={options}
-              value={guestCount}
-              onChange={(selected) => setGuestCount(selected)}
-              placeholder="請選擇人數"
-              styles={selectStyles}
-            />
-          </div>
-          <div className="form-group">
-            <div>2. 抵達峇里島的時間＆航班資訊</div>
-            <div className="flight-group">
-              <div className="form-field">
-                <label htmlFor="arrivalDate">抵達日期</label>
-                <DatePicker id="arrivalDate" placeholderText=" 月 / 日 / 年" popperPlacement="bottom-start" selected={selectedDate} onChange={(date) => { setSelectedDate(date) }} />
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="form-custom">
+            <div className="form-group">
+              <label htmlFor="statistics">1. 參加人數</label>
+              <Controller
+                control={control}
+                name="statistics"
+                rules={{ required: "請選擇參加人數" }}
+                render={({ field }) => (
+                  <Select
+                    inputId="statistics"
+                    options={options}
+                    value={field.value || null}
+                    onChange={(selected) => field.onChange(selected)}
+                    placeholder="請選擇人數"
+                    styles={selectStyles}
+                  />
+                )}
+              />
+              {errors.statistics && (
+                <span>{errors.statistics.message}</span>
+              )}
+            </div>
+            <div className="form-group">
+              <div>2. 抵達峇里島的時間＆航班資訊</div>
+              <div className="flight-group">
+                <div className="form-field">
+                  <label htmlFor="arrivalDate">抵達日期</label>
+                  <Controller
+                    control={control}
+                    name="arrivalDate"
+                    rules={{ required: "請選擇抵達日期" }}
+                    render={({ field }) => (
+                      <DatePicker
+                        id="arrivalDate"
+                        placeholderText=" 月 / 日 / 年"
+                        selected={field.value}
+                        popperPlacement="bottom-start"
+                        onChange={(date) => { field.onChange(date) }} />
+                    )}
+                  />
+                  {errors.arrivalDate && (
+                    <span>{errors.arrivalDate.message}</span>
+                  )}
+                </div>
+                <div className="form-field">
+                  <label htmlFor="arrivalTime">抵達時間</label>
+                  <Controller
+                    control={control}
+                    name="arrivalTime"
+                    rules={{ required: "請選擇抵達時間" }}
+                    render={({ field }) => (<DatePicker
+                      id="arrivalTime"
+                      placeholderText="--：-- --"
+                      selected={field.value}
+                      onChange={(time) => field.onChange(time)}
+                      showTimeSelect
+                      showTimeSelectOnly
+                      timeIntervals={15}
+                      timeCaption="時間"
+                      dateFormat="hh:mm aa"
+                    />)}
+                  /> {errors.arrivalTime && (
+                    <span>{errors.arrivalTime.message}</span>
+                  )}
+                </div>
               </div>
-              <div className="form-field">
-                <label htmlFor="arrivalTime">抵達時間</label>
-                <DatePicker
-                  id="arrivalTime"
-                  placeholderText="--：-- --"
-                  selected={arrivalTime}
-                  onChange={(time) => setArrivalTime(time)}
-                  showTimeSelect
-                  showTimeSelectOnly
-                  timeIntervals={15}
-                  timeCaption="時間"
-                  dateFormat="hh:mm aa"
+              <div className="flight-group">
+                <div className="form-field">
+                  <label htmlFor="arrivalAirlines">航空資訊</label>
+                  <input type="text" id="arrivalAirlines" placeholder="請輸入航空公司" {...register('arrivalAirlines', {
+                    required: '請填寫航空資訊'
+                  })} />
+                  <span>{errors.arrivalAirlines ? errors.arrivalAirlines.message : ''}</span>
+                </div>
+                <div className="form-field">
+                  <label htmlFor="arrivalFlightNumber">航空編號</label>
+                  <input type="text" id="arrivalFlightNumber" placeholder="請輸入航空編號" {...register('arrivalFlightNumber', {
+                    required: '請填寫航空編號',
+                  })} />
+                  <span>{errors.arrivalFlightNumber ? errors.arrivalFlightNumber.message : ''}</span>
+                </div>
+              </div>
+            </div>
+            <div className="form-group">
+              <div>3. 離開峇里島的時間＆航班資訊</div>
+              <div className="flight-group">
+                <div className="form-field">
+                  <label htmlFor="departureDate">離開日期</label>
+                  <Controller
+                    control={control}
+                    name="departureDate"
+                    rules={{ required: "請選擇離開日期" }}
+                    render={({ field }) => (
+                      <DatePicker
+                        id="departureDate"
+                        placeholderText=" 月 / 日 / 年"
+                        selected={field.value}
+                        popperPlacement="bottom-start"
+                        onChange={(date) => { field.onChange(date) }} />
+                    )}
+                  />
+                  {errors.departureDate && (
+                    <span>{errors.departureDate.message}</span>
+                  )}
+                </div>
+                <div className="form-field">
+                  <label htmlFor="departureTime">離開時間</label>
+                  <Controller
+                    control={control}
+                    name="departureTime"
+                    rules={{ required: "請選擇離開時間" }}
+                    render={({ field }) => (
+                      <DatePicker
+                        id="departureTime"
+                        placeholderText=" --：-- --"
+                        selected={field.value}
+                        onChange={(time) => field.onChange(time)}
+                        showTimeSelect
+                        showTimeSelectOnly
+                        timeIntervals={15}
+                        timeCaption="時間"
+                        dateFormat="hh:mm aa"
+                      />
+                    )} />
+                  {errors.departureTime && (
+                    <span>{errors.departureTime.message}</span>
+                  )}
+                </div>
+              </div>
+              <div className="flight-group">
+                <div className="form-field">
+                  <label htmlFor="departureAirline">航空資訊</label>
+                  <input type="text" id="departureAirline" placeholder="請輸入航空公司" {...register('departureAirline', {
+                    required: '請填寫航空資訊',
+                  })} />
+                  <span>{errors.departureAirline ? errors.departureAirline.message : ''}</span>
+                </div>
+                <div className="form-field">
+                  <label htmlFor="departureFlightNumber">航空編號</label>
+                  <input type="text" id="departureFlightNumber" placeholder="請輸入航空編號" {...register('departureFlightNumber', {
+                    required: '請填寫航空編號',
+                  })} />
+                  <span>{errors.departureFlightNumber ? errors.departureFlightNumber.message : ''}</span>
+                </div>
+              </div>
+            </div>
+            <div className="form-group">
+              <div>4. 是否對任何食物過敏？</div>
+              <div className="checkbox-group">
+                <div>
+                  <input type="radio" className="checkbox" id="noAllergies" value="none" {...register('allergyStatus')} />
+                  <label htmlFor="noAllergies">無</label>
+                </div>
+                <div>
+                  <input type="radio" className="checkbox" id="allergies" value='yes' {...register('allergyStatus', { required: '請選擇是否有食物過敏', })} />
+                  <label htmlFor="allergies">有 (請說明)</label>
+                  <span>{errors.allergyStatus ? errors.allergyStatus.message : ''}</span>
+                </div>
+              </div>
+              {allergyStatus === 'yes' && (<textarea placeholder="例如：花生、海鮮、素食、宗教飲食等" {...register('allergyContent', { required: '請填寫您的飲食需求', })}></textarea>)}
+              <span>{errors.allergyContent ? errors.allergyContent.message : ''}</span>
+            </div>
+            <div className="form-group">
+              <div>5. 是否有其他特殊需求？</div>
+              <div className="checkbox-group">
+                <div>
+                  <input type="radio" className="checkbox" id="noNeed" value='none' {...register('needStatus', { required: '請選擇是否有特殊需求', })} />
+                  <label htmlFor="noNeed">無</label>
+                </div>
+                <div>
+                  <input type="radio" className="checkbox" id="need" value='yes' {...register('needStatus')} />
+                  <label htmlFor="need">有 (請說明)</label>
+                  <span>{errors.needStatus ? errors.needStatus.message : ''}</span>
+                </div>
+              </div>
+              {needStatus === 'yes' && (<textarea placeholder="例如：兒童座椅、輪椅協助等" {...register('needContent', { required: '請填寫您的需求', })}></textarea>)}
+              <span>{errors.needContent ? errors.needContent.message : ''}</span>
+            </div>
+            <div className="form-group">
+              <div>6. 是否需要我們協助規畫婚禮以外的峇里島行程？</div>
+              <div className="checkbox-group">
+                <div>
+                  <input type="radio" className="checkbox" id="noJourney" value='none' {...register('regularTravelStatus', { required: '請選擇是否需要協助', })} />
+                  <label htmlFor="noJourney">不需要</label>
+                </div>
+                <div>
+                  <input type="radio" className="checkbox" id="journey" value='yes'{...register('regularTravelStatus')} />
+                  <label htmlFor="journey">需要</label>
+                  <span>{errors.regularTravelStatus ? errors.regularTravelStatus.message : ''}</span>
+                </div>
+              </div>
+              {regularTravelStatus === 'yes' && (
+                <Controller
+                  control={control}
+                  name="travelPlanDate"
+                  rules={{ required: "請選擇日期" }}
+                  render={({ field }) => (
+                    <DatePicker
+                      id="travelPlanDate"
+                      placeholderText=" 月 / 日 / 年"
+                      selected={field.value}
+                      popperPlacement="bottom-start"
+                      onChange={(date) => { field.onChange(date) }}
+                      wrapperClassName="datepicker-full"
+                    />
+                  )}
                 />
-
-              </div>
+              )}
+               {errors.travelPlanDate && (
+                    <span>{errors.travelPlanDate.message}</span>
+                  )}
             </div>
-            <div className="flight-group">
-              <div className="form-field">
-                <label htmlFor="">航空資訊</label>
-                <input type="text" placeholder="請輸入航空公司" />
-              </div>
-              <div className="form-field">
-                <label htmlFor="">航空編號</label>
-                <input type="text" placeholder="請輸入航空編號" />
-              </div>
+            <div className="form-group">
+              <label htmlFor="blessings">7. 給我們的祝福</label>
+              <textarea id="blessings" placeholder="寫下您想對我們說的話..." {...register('blessings')}></textarea>
             </div>
+            <button type="submit" className="form-btn">送出回覆</button>
           </div>
-          <div className="form-group">
-            <div>3. 離開峇里島的時間＆航班資訊</div>
-            <div className="flight-group">
-              <div className="form-field">
-                <label htmlFor="departureDate">離開日期</label>
-                <DatePicker id="departureDate" placeholderText=" 月 / 日 / 年" popperPlacement="bottom-start" selected={selectedDate} onChange={(date) => { setSelectedDate(date) }} />
-              </div>
-              <div className="form-field">
-                <label htmlFor="departureTime">離開時間</label>
-                <DatePicker
-                  id="departureTime"
-                  placeholderText=" --：-- --"
-                  selected={arrivalTime}
-                  onChange={(time) => setArrivalTime(time)}
-                  showTimeSelect
-                  showTimeSelectOnly
-                  timeIntervals={15}
-                  timeCaption="時間"
-                  dateFormat="hh:mm aa"
-                />
-              </div>
-            </div>
-            <div className="flight-group">
-              <div className="form-field">
-                <label htmlFor="">航空資訊</label>
-                <input type="text" placeholder="請輸入航空公司" />
-              </div>
-              <div className="form-field">
-                <label htmlFor="">航空編號</label>
-                <input type="text" placeholder="請輸入航空編號" />
-              </div>
-            </div>
-          </div>
-          <div className="form-group">
-            <div>4. 是否對任何食物過敏？</div>
-            <div className="checkbox-group">
-              <div>
-                <input type="checkbox" className="checkbox" id="noAllergies" />
-                <label htmlFor="noAllergies">無</label>
-              </div>
-              <div>
-                <input type="checkbox" className="checkbox" id="allergies" />
-                <label htmlFor="allergies">有 (請說明)</label>
-              </div>
-            </div>
-            <textarea name="" id="" placeholder="例如：花生、海鮮、素食、宗教飲食等"></textarea>
-          </div>
-          <div className="form-group">
-            <div>5. 是否有其他特殊需求？</div>
-            <div className="checkbox-group">
-              <div>
-                <input type="checkbox" className="checkbox" id="noNeed" />
-                <label htmlFor="noNeed">無</label>
-              </div>
-              <div>
-                <input type="checkbox" className="checkbox" id="need" />
-                <label htmlFor="need">有 (請說明)</label>
-              </div>
-            </div>
-            <textarea name="" id="" placeholder="例如：兒童座椅、輪椅協助等"></textarea>
-          </div>
-          <div className="form-group">
-            <div>6. 是否需要我們協助規畫婚禮以外的峇里島行程？</div>
-            <div className="checkbox-group">
-              <div>
-                <input type="checkbox" className="checkbox" id="noJourney" />
-                <label htmlFor="noJourney">不需要</label>
-              </div>
-              <div>
-                <input type="checkbox" className="checkbox" id="journey" />
-                <label htmlFor="journey">需要</label>
-              </div>
-            </div>
-            <input type="time" id="journeyTime" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="statistics">7. 給我們的祝福</label>
-            <textarea name="" id="" placeholder="寫下您想對我們說的話..."></textarea>
-          </div>
-          <button type="submit" className="form-btn">送出回覆</button>
-        </div>
+        </form>
       </div>
     </div>
   </>)
