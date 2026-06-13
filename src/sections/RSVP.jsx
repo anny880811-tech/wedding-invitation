@@ -68,10 +68,24 @@ const RSVP = () => {
     control,
     watch,
     formState: { errors },
-  } = useForm()
+  } = useForm({
+    shouldUnregister:true,
+    defaultValues: {
+      statistics: null,
+      arrivalDate: null,
+      arrivalTime: null,
+      departureDate: null,
+      departureTime: null,
+      travelPlanDate: null,
+      allergyStatus: "",
+      needStatus: "",
+      regularTravelStatus: "",
+    }
+  })
   const onSubmit = (data) => {
     const formattedData = {
       ...data,
+      statistics: data.statistics,
       arrivalDate: formatDate(data.arrivalDate),
       arrivalTime: formatTime(data.arrivalTime),
       departureDate: formatDate(data.departureDate),
@@ -104,8 +118,8 @@ const RSVP = () => {
                   <Select
                     inputId="statistics"
                     options={options}
-                    value={field.value || null}
-                    onChange={(selected) => field.onChange(selected)}
+                    onChange={(selected) => field.onChange(selected?.value)}
+                    value={options.find(opt => opt.value === field.value) || null}
                     placeholder="請選擇人數"
                     styles={selectStyles}
                   />
@@ -243,15 +257,16 @@ const RSVP = () => {
               <div>4. 是否對任何食物過敏？</div>
               <div className="checkbox-group">
                 <div>
-                  <input type="radio" className="checkbox" id="noAllergies" value="none" {...register('allergyStatus')} />
+                  <input type="radio" className="checkbox" id="noAllergies" value="none" {...register('allergyStatus', { required: '請選擇是否有食物過敏', })} />
                   <label htmlFor="noAllergies">無</label>
                 </div>
                 <div>
-                  <input type="radio" className="checkbox" id="allergies" value='yes' {...register('allergyStatus', { required: '請選擇是否有食物過敏', })} />
+                  <input type="radio" className="checkbox" id="allergies" value='yes' {...register('allergyStatus')} />
                   <label htmlFor="allergies">有 (請說明)</label>
-                  <span>{errors.allergyStatus ? errors.allergyStatus.message : ''}</span>
+
                 </div>
               </div>
+              <span>{errors.allergyStatus ? errors.allergyStatus.message : ''}</span>
               {allergyStatus === 'yes' && (<textarea placeholder="例如：花生、海鮮、素食、宗教飲食等" {...register('allergyContent', { required: '請填寫您的飲食需求', })}></textarea>)}
               <span>{errors.allergyContent ? errors.allergyContent.message : ''}</span>
             </div>
@@ -265,9 +280,9 @@ const RSVP = () => {
                 <div>
                   <input type="radio" className="checkbox" id="need" value='yes' {...register('needStatus')} />
                   <label htmlFor="need">有 (請說明)</label>
-                  <span>{errors.needStatus ? errors.needStatus.message : ''}</span>
                 </div>
               </div>
+              <span>{errors.needStatus ? errors.needStatus.message : ''}</span>
               {needStatus === 'yes' && (<textarea placeholder="例如：兒童座椅、輪椅協助等" {...register('needContent', { required: '請填寫您的需求', })}></textarea>)}
               <span>{errors.needContent ? errors.needContent.message : ''}</span>
             </div>
@@ -281,9 +296,9 @@ const RSVP = () => {
                 <div>
                   <input type="radio" className="checkbox" id="journey" value='yes'{...register('regularTravelStatus')} />
                   <label htmlFor="journey">需要</label>
-                  <span>{errors.regularTravelStatus ? errors.regularTravelStatus.message : ''}</span>
                 </div>
               </div>
+              <span>{errors.regularTravelStatus ? errors.regularTravelStatus.message : ''}</span>
               {regularTravelStatus === 'yes' && (
                 <Controller
                   control={control}
@@ -301,9 +316,9 @@ const RSVP = () => {
                   )}
                 />
               )}
-               {errors.travelPlanDate && (
-                    <span>{errors.travelPlanDate.message}</span>
-                  )}
+              {errors.travelPlanDate && (
+                <span>{errors.travelPlanDate.message}</span>
+              )}
             </div>
             <div className="form-group">
               <label htmlFor="blessings">7. 給我們的祝福</label>
