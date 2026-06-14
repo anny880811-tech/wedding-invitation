@@ -2,8 +2,10 @@ import { useForm, Controller } from "react-hook-form"
 import { format } from "date-fns"
 import DatePicker from "react-datepicker"
 import Select from "react-select"
+import axios from "axios"
 
 const RSVP = () => {
+  const sheetdbUrl = `https://sheetdb.io/api/v1/9tmu6xegt8tur`
   const options = Array.from({ length: 11 }, (_, i) => ({
     value: i,
     label: `${i} 人`,
@@ -67,9 +69,9 @@ const RSVP = () => {
     handleSubmit,
     control,
     watch,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm({
-    shouldUnregister:true,
+    shouldUnregister: true,
     defaultValues: {
       statistics: null,
       arrivalDate: null,
@@ -82,7 +84,7 @@ const RSVP = () => {
       regularTravelStatus: "",
     }
   })
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const formattedData = {
       ...data,
       statistics: data.statistics,
@@ -90,14 +92,20 @@ const RSVP = () => {
       arrivalTime: formatTime(data.arrivalTime),
       departureDate: formatDate(data.departureDate),
       departureTime: formatTime(data.departureTime),
-      travelPlanDate: formatDate(data.travelPlanDate),
     }
     console.log(formattedData)
+    try {
+      console.log(JSON.stringify({ data: [formattedData] }, null, 2))
+      const res = await axios.post(sheetdbUrl, { data: [formattedData] })
+      console.log('成功', res.data);
+
+    } catch (error) {
+      console.error("送出錯誤:", error.response?.data || error.message)
+    }
   }
   const allergyStatus = watch('allergyStatus')
   const regularTravelStatus = watch('regularTravelStatus')
   const needStatus = watch('needStatus')
-
   return (<>
     <div className="RSVP-custom">
       <div className="section-title">GUSET RECISTARTION</div>
@@ -295,36 +303,18 @@ const RSVP = () => {
                 </div>
                 <div>
                   <input type="radio" className="checkbox" id="journey" value='yes'{...register('regularTravelStatus')} />
-                  <label htmlFor="journey">需要</label>
+                  <label htmlFor="journey">需要(請附上日期)</label>
                 </div>
               </div>
               <span>{errors.regularTravelStatus ? errors.regularTravelStatus.message : ''}</span>
-              {regularTravelStatus === 'yes' && (
-                <Controller
-                  control={control}
-                  name="travelPlanDate"
-                  rules={{ required: "請選擇日期" }}
-                  render={({ field }) => (
-                    <DatePicker
-                      id="travelPlanDate"
-                      placeholderText=" 月 / 日 / 年"
-                      selected={field.value}
-                      popperPlacement="bottom-start"
-                      onChange={(date) => { field.onChange(date) }}
-                      wrapperClassName="datepicker-full"
-                    />
-                  )}
-                />
-              )}
-              {errors.travelPlanDate && (
-                <span>{errors.travelPlanDate.message}</span>
-              )}
+              {regularTravelStatus === 'yes' && (<textarea placeholder="請附上日期及需要的協助" {...register('regularTravelContent', { required: '請填寫日期及需要的協助', })}></textarea>)}
+              <span>{errors.regularTravelContent ? errors.regularTravelContent.message : ''}</span>
             </div>
             <div className="form-group">
               <label htmlFor="blessings">7. 給我們的祝福</label>
               <textarea id="blessings" placeholder="寫下您想對我們說的話..." {...register('blessings')}></textarea>
             </div>
-            <button type="submit" className="form-btn">送出回覆</button>
+            <button type="submit" className="form-btn" disabled={isSubmitting}>{isSubmitting ? '表單送出中...' : '送出回覆'}</button>
           </div>
         </form>
       </div>
