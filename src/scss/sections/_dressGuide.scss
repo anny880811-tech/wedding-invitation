@@ -1,13 +1,15 @@
 .dressGuide-custom {
   width: 100%;
-  padding: 2rem 2rem 2rem 2rem;
+  padding: 2rem 1.5rem 2rem 1.5rem;
   box-sizing: border-box;
+  background-color: $color-ivory;
+  
 
   .color-container {
     margin-top: 1rem;
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 1.2rem;
     justify-content: center;
     font-family: $font-zh-sans;
 
@@ -23,6 +25,7 @@
 
 .note-custom {
   width: 100%;
-  padding: 2rem 2rem 2rem 2rem;
+  padding: 2rem 1.5rem 2rem 1.5rem;
   box-sizing: border-box;
+  background-color: $color-ivory;
 }
