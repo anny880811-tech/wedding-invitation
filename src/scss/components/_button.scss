@@ -1,10 +1,11 @@
 .cover-btn {
-  background-color: $color-mist-blue;
+  background-color: $color-ivory;
   font-size: 1rem;
-  color: white;
+  color: $color-slate-blue;
   padding: 0.8rem 1rem 0.8rem 1rem;
   border: none;
   border-radius: 1.6rem;
+  box-shadow: 5px 5px 20px rgba(109, 128, 138, 0.8);
   display: inline-block;
 
   @media (min-width: 1024px) {

@@ -1,10 +1,11 @@
+import TRE_2530 from '../assets/TRE_2530.webp'
 const Hero = () => {
   return (<>
     <div className="hero-custom">
       <div className="img-container">
-        {/* <img src="/src/assets/img/37467329_cuteanimated_542.jpg" alt="婚紗照" className="main-img" /> */}
+        <img src={TRE_2530} alt="婚紗照" className="main-img" loading="lazy" />
       </div>
-      <h1 className="title">Beni ＆ Yiting</h1>
+      <h1 className="title">韋昊良 ＆ 呂易庭</h1>
       <div className="section-title">A Note From Us</div>
       <h3 className="section-header">我們想說</h3>
       <div className="section-heading__divider"></div>

@@ -18,7 +18,7 @@
       .photo-s-container {
         flex: 1;
         aspect-ratio: 1/1;
-        border-radius: 1.5rem;
+        border-radius: 1rem;
         background-color: rgb(188, 177, 167);
 
         .photo-s {
@@ -30,18 +30,44 @@
       }
     }
 
+    .photo-mixed-group {
+      display: flex;
+      gap: 0.8rem;
+      align-items: stretch;
 
-    .photo-l-container {
-      width: 100%;
-      aspect-ratio: 1.8/1;
-      border-radius: 1.5rem;
-      background-color: rgb(188, 177, 167);
+      .photo-landscape-container {
+        flex: 1.2; // 橫式佔比較寬
+        aspect-ratio: 4/3;
+        border-radius: 1rem;
+        background-color: rgb(188, 177, 167);
+      }
 
-      .photo-l {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: opacity 0.3s ease;
+      .photo-portrait-container {
+        flex: 0.8; // 直式佔比較窄
+        aspect-ratio: 3/4;
+        border-radius: 1rem;
+        background-color: rgb(188, 177, 167);
+      }
+
+      .photo-landscape-container,
+      .photo-portrait-container {
+        overflow: hidden;
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background-color: rgba(255, 180, 100, 0.08);
+          pointer-events: none;
+        }
+
+        .photo-s {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 1rem;
+        }
       }
     }
   }

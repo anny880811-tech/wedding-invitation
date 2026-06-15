@@ -21,6 +21,8 @@
     background-color: rgb(188, 177, 167);
     overflow: hidden;
     position: relative;
+    border: 1px solid rgba(248, 244, 237, 0.1);
+    margin-bottom:20px;
 
     .main-img {
       width: 100%;
@@ -28,10 +30,23 @@
       object-fit: cover;
       transition: opacity 0.3s ease;
     }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: rgba(255, 180, 100, 0.08);
+      pointer-events: none;
+    }
   }
 
   .title {
     margin-top: 0.5rem;
     margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-weight: 500;
+    letter-spacing: .08em;
   }
 }

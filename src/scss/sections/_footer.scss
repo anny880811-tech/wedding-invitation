@@ -3,20 +3,36 @@
   padding: 2rem 2rem 0rem 2rem;
   height: 100vh;
   flex-shrink: 0;
-  position: relative;
-  background-image:
-    linear-gradient(to bottom, $color-ivory 0%, rgba($color-ivory, 0) 15%),
-    linear-gradient(rgb(203, 197, 192), rgb(203, 197, 192));
-  // background-image: 
-  // linear-gradient(to bottom, $color-ivory 0%, rgba($color-ivory, 0) 15%),
-  // url('https://images.pexels.com/photos/5729156/pexels-photo-5729156.jpeg');
-  background-size: cover;
-  background-position: center;
+  display: flex;
+  flex-direction: column;
+
+  .footer-photo-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to bottom, $color-ivory 0%, rgba($color-ivory, 0) 20%), // 上方漸層
+        linear-gradient( rgba(255, 180, 100, 0.08)); // 暖色疊層
+      pointer-events: none; // 不阻擋點擊
+    }
+
+    img {
+      width: auto;
+      height: 100%; // 或 auto
+      object-fit: cover; // 裁切填滿
+      display: block;
+    }
+  }
+
 
   .footer-section {
-    position: absolute;
-    bottom: 0;
-    left: 0;
     width: 100%;
     box-sizing: border-box;
     padding: 1rem;
