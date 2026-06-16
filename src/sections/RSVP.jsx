@@ -109,7 +109,7 @@ const RSVP = () => {
   const needStatus = watch('needStatus')
   return (<>
     <div className="RSVP-custom">
-      <div className="section-title">GUSET RECISTARTION</div>
+      <div className="section-title">GUEST REGISTARTION</div>
       <h3 className="section-header">賓客登記</h3>
       <div className="section-heading__divider"></div>
       <div className="form-container">
