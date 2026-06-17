@@ -8,6 +8,7 @@ import RSVP from "./sections/RSVP";
 import TravelGuide from "./sections/TravelGuide";
 import DressGuide from "./sections/DressGuide";
 import Footer from "./sections/Footer";
+import LeaveMessage from "./sections/LeaveMessage";
 
 
 function App() {
@@ -19,11 +20,12 @@ function App() {
         <div className="content-section">
           <Hero />
           <WeddingInfo />
-          <Gallery />
           <WeddingHospitality />
+          <Gallery />
           <RSVP />
           <TravelGuide />
           <DressGuide />
+          <LeaveMessage/>
           <Footer />
         </div>
       </div>

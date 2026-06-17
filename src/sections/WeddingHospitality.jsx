@@ -1,4 +1,4 @@
-import { BedDouble, Utensils,Plane } from "lucide-react"
+import { BedDouble, Plane } from "lucide-react"
 const WeddingHospitality = () => {
   const hospitalityData = [
     {
@@ -10,7 +10,7 @@ const WeddingHospitality = () => {
       ],
     },
     {
-      icon: <Utensils size={25} />,
+      icon: <i className="bi bi-fork-knife"></i>,
       title: '餐食安排',
       details: [
         '1/23 晚餐',
@@ -35,14 +35,24 @@ const WeddingHospitality = () => {
     },
   ]
   return (<>
-    <div className="hospitality-custom">
-      <div className="section-title">WHAT WE PROVIDE</div>
-      <h3 className="section-header">我們為您準備了</h3>
-      <div className="section-heading__divider"></div>
+    <svg width="0" height="0" style={{ position: 'absolute' }}>
+      <defs>
+        <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#b8922a" />
+          <stop offset="25%" stopColor="#d4af37" />
+          <stop offset="50%" stopColor="#b8891a" />
+          <stop offset="75%" stopColor="#ffe9a3" />
+          <stop offset="100%" stopColor="#d4af37" />
+        </linearGradient>
+      </defs>
+    </svg>
+    <div className="hospitality-custom dark-section">
+      <div className="section-title-dark gold-text">WHAT WE PROVIDE</div>
+      <h3 className="section-header-dark">我們為您準備了</h3>
       <div className="section-content">
         {hospitalityData.map((item, index) => {
           return (<div className="infoCard" key={index}>
-            <div className="card-icon">
+            <div className="card-icon gold-text">
               <div className="icon-circle">
                 {item.icon}
               </div>
@@ -51,7 +61,7 @@ const WeddingHospitality = () => {
               <h3 className="card-title">{item.title}</h3>
               {item.details.map((detail, i) => {
                 return (<div key={i}>
-                  <p className="card-primary">{detail}</p>
+                  <p className="card-primary gold-text">{detail}</p>
                 </div>)
               })}
             </div>

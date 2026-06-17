@@ -10,9 +10,9 @@ const Hero = () => {
       <h3 className="section-header">我們想說</h3>
       <div className="section-heading__divider"></div>
       <div className="section-content">
-        <p>感謝您願意與我們一起飛往峇里島，</p>
-        <p>見證人生中最重要的一天。</p>
-        <p>這不只是婚禮，</p>
+        <p>感謝您願意與我們一起飛往峇里島</p>
+        <p>見證人生中最重要的一天</p>
+        <p>這不只是婚禮</p>
         <p>更是一趟屬於我們的旅行</p>
       </div>
     </div>

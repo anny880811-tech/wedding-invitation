@@ -5,17 +5,37 @@
   align-items: center;
   width: 100%;
   box-sizing: border-box;
-  min-height: 100vh;
   padding: 2rem 2rem 2rem 2rem;
-  background-image:
-    url('https://images.unsplash.com/photo-1702584161162-05a2700a2a5d?q=80&w=752&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-  background-size: cover;
-  background-blend-mode: multiply;
-  background-color: rgba($color-mist-blue, 0.3);
+  background-color: $color-midnight;
+  margin-bottom: -1px;
 
   .section-content {
-    margin-top: 3rem;
+    position: relative;
+    border: none; // 移除原本的 border
+    border-radius: 0.5rem;
+    margin-top: 1rem;
     width: 100%;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 0.5rem;
+      padding: 1px; 
+      background: linear-gradient(135deg,
+          #b8922a 0%,
+          #f5e090 25%,
+          #c9a84c 45%,
+          #fff8c0 55%,
+          #b8922a 75%,
+          #f0d060 100%);
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
   }
 
   .infoCard {
@@ -24,28 +44,30 @@
     margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
-    background-color: $color-ivory;
-    border-radius: 2rem;
-    box-shadow: 3px 5px 10px #6d808a14;
+    // background-color: $color-ivory;
+    // border-radius: 2rem;
+    // box-shadow: 3px 5px 10px #6d808a14;
     overflow: hidden;
 
-    .card-illustration img {
-      position: absolute;
-      right: 5%;
-      bottom: 0;
-      width: auto;
-      height: 90px;
-      display: block;
-      opacity: 0.5;
-      pointer-events: none;
-      z-index: 0;
-    }
+
+    // .card-illustration img {
+    //   position: absolute;
+    //   right: 5%;
+    //   bottom: 0;
+    //   width: auto;
+    //   height: 90px;
+    //   display: block;
+    //   opacity: 0.5;
+    //   pointer-events: none;
+    //   z-index: 0;
+    // }
 
     h3,
     p {
       margin: 0;
       line-height: 1.4;
     }
+
 
     .card-icon {
       width: 65px;
@@ -56,6 +78,7 @@
     .card-content {
       flex: 1;
       text-align: start;
+      color: $color-gold;
 
       .card-title {
         margin-bottom: 0.3rem;
@@ -65,9 +88,9 @@
         display: inline-block;
         text-decoration: none;
         margin-top: 0.5rem;
-        background-color: $color-mist-blue;
+        background-color: $color-ivory;
         font-size: 1rem;
-        color: white;
+        color: $color-midnight;
         padding: 0.3rem 1rem 0.3rem 1.8rem;
         border: none;
         border-radius: 1.6rem;
@@ -75,7 +98,7 @@
         white-space: nowrap;
 
         &:hover {
-          background-color: #637583;
+          background-color: #f2e3b3;
         }
 
         i {

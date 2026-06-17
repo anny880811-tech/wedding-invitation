@@ -131,6 +131,29 @@ textarea {
   text-transform: uppercase;
 }
 
+.gold-text {
+  background: linear-gradient(120deg,
+      #fff6c7 0%,
+      #d4af37 25%,
+      #b8891a 50%,
+      #ffe9a3 75%,
+      #d4af37 100%);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+}
+
+.section-title-dark {
+  color: $color-gold;
+  font-family: $font-en-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
 .section-header {
   position: relative;
   font-family: $font-zh-serif;
@@ -139,6 +162,17 @@ textarea {
   letter-spacing: 0.1em;
   line-height: 1.2;
   margin-bottom: 1rem;
+}
+
+.section-header-dark {
+  position: relative;
+  font-family: $font-zh-serif;
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: $color-ivory;
 }
 
 .section-heading__divider {
@@ -183,11 +217,11 @@ textarea {
 }
 
 
+
 .icon-circle {
   width: 65px;
   height: 65px;
-  border-radius: 50%;
-  background-color: $color-mist-blue;
+  overflow: visible;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -199,6 +233,16 @@ i {
   color: $color-ivory;
 }
 
-.lucide {
-  color: $color-ivory;
+.dark-section {
+  h1, h2, h3, h4, h5, h6 {
+    color: $color-ivory;
+  }
+
+  p, label {
+    color: $color-gold;
+  }
+
+  i {
+    color: $color-gold;
+  }
 }

@@ -6,21 +6,52 @@
   width: 100%;
   padding: 2rem 2rem 2rem 2rem;
   box-sizing: border-box;
+  background-color: $color-midnight;
+
+  .icon-circle svg {
+    stroke: url(#goldGradient);
+    color: transparent;
+  }
 
 
   .section-content {
-    margin-top: 2rem;
+    position: relative;
+    border: none;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
     width: 100%;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 0.5rem;
+      padding: 1px;
+      background: linear-gradient(135deg,
+          #b8922a 0%,
+          #f5e090 25%,
+          #c9a84c 45%,
+          #fff8c0 55%,
+          #b8922a 75%,
+          #f0d060 100%);
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
   }
+
 
   .infoCard {
     padding: 1.5rem 1rem;
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
-    background-color: rgb(250, 249, 247);
-    border-radius: 2rem;
-    box-shadow: 3px 5px 10px rgba(109, 128, 138, 0.08);
+    // background-color: rgb(250, 249, 247);
+    // border-radius: 2rem;
+    // box-shadow: 3px 5px 10px rgba(109, 128, 138, 0.08);
 
     h3,
     p {
@@ -28,15 +59,12 @@
       line-height: 1.4;
     }
 
-    .icon-circle {
-      background-color: $color-sage;
-    }
-
     .card-icon {
       width: 65px;
       flex-shrink: 0;
       margin-right: 1.5rem;
     }
+
 
     .card-content {
       flex: 1;
