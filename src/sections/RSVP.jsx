@@ -76,6 +76,7 @@ const RSVP = () => {
     defaultValues: {
       joinStatus: "",
       statistics: null,
+      email: null,
       arrivalDate: null,
       arrivalTime: null,
       departureDate: null,
@@ -114,8 +115,9 @@ const RSVP = () => {
       <h3 className="section-header">賓客登記</h3>
       <div className="section-heading__divider"></div>
       <div className="form-container">
-        <p>為了讓我們更好的安排一切，</p>
-        <p>請協助填寫以下資料。</p>
+        <p>為了讓我們更好的安排一切</p>
+        <p>請協助填寫以下資料</p>
+        <p>請於 9/30 前填寫完成</p>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="form-custom">
             <div className="form-group">
@@ -157,7 +159,14 @@ const RSVP = () => {
                 )}
               </div>
               <div className="form-group">
-                <div>2. 抵達峇里島的時間＆航班資訊</div>
+                <label htmlFor="email">2. Email <br /> (詳細活動於婚禮前1個月email通知)</label>
+                <input type="text" id="email" placeholder="請填寫您的Email" {...register('email', {
+                  required: '請填寫您的Email'
+                })} />
+                <span>{errors.email ? errors.email.message : ''}</span>
+              </div>
+              <div className="form-group">
+                <div>3. 抵達峇里島的時間＆航班資訊</div>
                 <div className="flight-group">
                   <div className="form-field">
                     <label htmlFor="arrivalDate">抵達日期</label>
@@ -218,7 +227,7 @@ const RSVP = () => {
                 </div>
               </div>
               <div className="form-group">
-                <div>3. 離開峇里島的時間＆航班資訊</div>
+                <div>4. 離開峇里島的時間＆航班資訊</div>
                 <div className="flight-group">
                   <div className="form-field">
                     <label htmlFor="departureDate">離開日期</label>
@@ -281,7 +290,7 @@ const RSVP = () => {
                 </div>
               </div>
               <div className="form-group">
-                <div>4. 是否對任何食物過敏？</div>
+                <div>5. 是否對任何食物過敏？</div>
                 <div className="checkbox-group">
                   <div>
                     <input type="radio" className="checkbox" id="noAllergies" value="none" {...register('allergyStatus', { required: '請選擇是否有食物過敏', })} />
@@ -298,7 +307,7 @@ const RSVP = () => {
                 <span>{errors.allergyContent ? errors.allergyContent.message : ''}</span>
               </div>
               <div className="form-group">
-                <div>5. 是否有其他特殊需求？</div>
+                <div>6. 是否有其他特殊需求？</div>
                 <div className="checkbox-group">
                   <div>
                     <input type="radio" className="checkbox" id="noNeed" value='none' {...register('needStatus', { required: '請選擇是否有特殊需求', })} />
@@ -314,7 +323,7 @@ const RSVP = () => {
                 <span>{errors.needContent ? errors.needContent.message : ''}</span>
               </div>
               <div className="form-group">
-                <div>6. 是否需要我們協助規畫婚禮以外的峇里島行程？</div>
+                <div>7. 是否需要我們協助規畫婚禮以外的峇里島行程？</div>
                 <div className="checkbox-group">
                   <div>
                     <input type="radio" className="checkbox" id="noJourney" value='none' {...register('regularTravelStatus', { required: '請選擇是否需要協助', })} />
@@ -330,7 +339,7 @@ const RSVP = () => {
                 <span>{errors.regularTravelContent ? errors.regularTravelContent.message : ''}</span>
               </div>
               <div className="form-group">
-                <div>7. 飯店活動報名(可複選)</div>
+                <div>8. 飯店活動報名(可複選)</div>
                 <div className="checkbox-group">
                   <div>
                     <input type="checkbox" className="checkbox" id="aJourney" value="A" {...register('journeyStatus')} />
@@ -351,7 +360,7 @@ const RSVP = () => {
                 </div>
               </div>
               <div className="form-group">
-                <label htmlFor="blessings">8. 給我們的祝福</label>
+                <label htmlFor="blessings">9. 給我們的祝福</label>
                 <textarea id="blessings" placeholder="寫下您想對我們說的話..." {...register('blessings')}></textarea>
               </div>
             </>)}

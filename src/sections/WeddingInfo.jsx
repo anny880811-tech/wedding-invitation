@@ -1,5 +1,5 @@
-import blue01 from '../assets/mist-blue01.png'
-import blue03 from '../assets/mist-blue03.png'
+// import blue01 from '../assets/mist-blue01.png'
+// import blue03 from '../assets/mist-blue03.png'
 
 const WeddingInfo = () => {
   const weddingInfoData = [
@@ -20,9 +20,9 @@ const WeddingInfo = () => {
     {
       icon: <i className="bi bi-geo-alt i-dark gold-text"></i>,
       title: '地點',
-      value: 'Alila Villas Uluwatu',
+      value: 'HOMM Saranam Baturiti',
       description: 'Bali,Indonesia',
-      mapUrl: 'https://maps.google.com/?q=Alila+Villas+Uluwatu',
+      mapUrl: 'https://maps.app.goo.gl/N4PrS8erK5nMvFSQ7',
     },
   ]
   return (<>
