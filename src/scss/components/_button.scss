@@ -25,3 +25,13 @@
   border: none;
   border-radius: 1.6rem;
 }
+
+.wish-btn {
+  background-color: rgba($color-mist-blue,0.8);
+  font-size: 1rem;
+  color: $color-ivory;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 3px 3px 10px rgba(109, 128, 138, 0.3);
+}
