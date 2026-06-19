@@ -1,4 +1,5 @@
 import { BedDouble, Plane } from "lucide-react"
+import flowers07 from "../assets/flowers07.png"
 const WeddingHospitality = () => {
   const hospitalityData = [
     {
@@ -50,6 +51,8 @@ const WeddingHospitality = () => {
       <div className="section-title-dark gold-text">WHAT WE PROVIDE</div>
       <h3 className="section-header-dark">我們為您準備了</h3>
       <div className="section-content">
+         <img src={flowers07} className="flower-edge flower-center " alt="" />
+         
         {hospitalityData.map((item, index) => {
           return (<div className="infoCard" key={index}>
             <div className="card-icon gold-text">

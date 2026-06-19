@@ -19,6 +19,7 @@
     height: 70px;
     z-index: 5;
     pointer-events: none;
+    opacity: 0.9;
 
     /* 核心：利用背景圖達成二方連續 */
     background-image: url('/src/assets/flowers01.png');
