@@ -1,5 +1,5 @@
-import flowers03 from '../assets/flowers03.png'
-
+// import flowers03 from '../assets/flowers03.png'
+import flowers07 from "../assets/flowers07.png"
 const WeddingInfo = () => {
   const weddingInfoData = [
     {
@@ -26,10 +26,11 @@ const WeddingInfo = () => {
   ]
   return (<>
     <div className="weddingInfo-custom dark-section">
-      <img src={flowers03} className="flower-bg flower-top-left" alt="" />
+      {/* <img src={flowers03} className="flower-bg flower-top-left" alt="" /> */}
       <div className="section-title-dark gold-text">WEDDING INFORMATION</div>
       <h3 className="section-header-dark">婚禮資訊</h3>
       <div className="section-content">
+        <img src={flowers07} className="flower-edge flower-center " alt="花卉分隔線" />
         {weddingInfoData.map((item, index) => {
           return (<div className="infoCard" key={index}>
             <div className="card-icon">
@@ -51,7 +52,7 @@ const WeddingInfo = () => {
           </div>)
         })}
       </div>
-      <img src={flowers03} className="flower-bg flower-bottom-right" alt="" />
+      {/* <img src={flowers03} className="flower-bg flower-bottom-right" alt="" /> */}
       <div className="anti-line-tape"></div>
     </div>
   </>)
