@@ -4,34 +4,38 @@ const WeddingHospitality = () => {
   const hospitalityData = [
     {
       icon: <BedDouble size={28} />,
-      title: '住宿安排',
+      title: '住宿安排 Accommodation',
       details: [
-        '3天2夜住宿',
-        '1/23 - 1/25',
+        '三天兩夜住宿',
+        '1/23(六) - 1/25(一)',
       ],
     },
     {
       icon: <i className="bi bi-fork-knife"></i>,
-      title: '餐食安排',
+      title: '餐食安排 Meals',
       details: [
-        '1/23 晚餐',
-        '1/24 早餐、晚餐',
-        '1/25 早餐',
+        '1/23 晚餐 Dinner',
+        '1/24 早餐&晚餐',
+        'Breakfast & Dinner',
+        '1/25 早餐 Breakfast',
       ],
     },
     {
       icon: <i className="bi bi-car-front"></i>,
-      title: '機場接送',
+      title: '機場-度假村接送 Airport Transfers',
       details: [
-        '接機 1/22、1/23',
-        '送機 1/25、1/26',
+        '接機 1/23(日)',
+        'Arrival transfer 1/23',
+        '送機 1/25(一)',
+        'Departure transfer  1/25',
       ],
     },
     {
       icon: <Plane size={28} />,
-      title: '其他時間',
+      title: '其他時間 Other Travel Dates',
       details: [
-        '若於其他日期抵達或離開峇里島，請自行安排交通',
+        '若於其他日期抵達/離開峇里島，請自行安排交通',
+        'If you arrive in or depart from Bali on other dates, please arrange your own transportation.',
       ],
     },
   ]
@@ -47,7 +51,7 @@ const WeddingHospitality = () => {
         </linearGradient>
       </defs>
     </svg>
-    <div className="hospitality-custom dark-section">
+    <div className="hospitality-custom dark-section dark-bg-wrapper">
       <div className="section-title-dark gold-text">WHAT WE PROVIDE</div>
       <h3 className="section-header-dark">我們為您準備了</h3>
       <div className="section-content">
@@ -70,7 +74,9 @@ const WeddingHospitality = () => {
           </div>)
         })}
       </div>
+            
     </div>
+    <div className="anti-line-tape"></div>
   </>)
 }
 

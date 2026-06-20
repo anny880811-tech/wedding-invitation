@@ -43,7 +43,7 @@ const DressGuide = () => {
       <div className="section-heading__divider"></div>
       <div className="section-content">
         <p>我們負擔婚禮3天2夜的住宿、部分餐食與機場接送</p>
-        <p></p>
+        <p className="en">As part of our wedding celebration, we will be delighted to cover your 3-day, 2-night accommodation, selected meals, and airport transfers.</p>
       </div>
     </div>
   </>)

@@ -52,7 +52,8 @@ h5 {
   }
 }
 
-a,p,
+a,
+p,
 label {
   font-size: 1rem;
   line-height: 1.8;
@@ -227,7 +228,17 @@ textarea {
   justify-content: center;
   flex-shrink: 0;
 }
-.en{
+
+.warn {
+  font-weight: 600;
+  font-size: 1.2rem;
+  // background-color: $color-ivory;
+  // padding: 0.1rem 1rem;
+  color: $color-ivory;
+}
+
+.en {
+  margin-top: 0.5rem;
   line-height: 1.5;
 }
 
@@ -237,11 +248,18 @@ i {
 }
 
 .dark-section {
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: $color-ivory;
   }
 
-  p, label {
+  p,
+  label {
     color: $color-gold;
   }
 

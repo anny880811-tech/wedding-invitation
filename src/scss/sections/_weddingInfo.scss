@@ -13,35 +13,16 @@
   background-position: center center;
   background-blend-mode: multiply;
   background-color: $color-midnight;
-  margin-bottom: -1px;
-  box-shadow: 0 1px 0 0 $color-midnight;
+  outline: 3px solid black;
+  padding-bottom: calc(4rem + 2px); // 補回來讓內容不移位
+  position: relative;
+  z-index: 1; // 確保自己蓋在下一個 section 上方
 
   .section-title-dark,
   .section-header-dark {
     position: relative;
     z-index: 3;
   }
-
-  // ─── 背景花卉裝飾 ───
-  // .flower-bg {
-  //   position: absolute;
-  //   width: 200px;
-  //   height: auto;
-  //   pointer-events: none;
-  //   z-index: 2;
-  // }
-
-  // .flower-top-left {
-  //   top: 80px;
-  //   left: 5px;
-  //   transform: rotate(180deg);
-  // }
-
-  // .flower-bottom-right {
-  //   bottom: 5px;
-  //   right: 5px;
-  //   transform: rotate(0deg);
-  // }
 
   .section-content {
     position: relative;
@@ -86,6 +67,19 @@
       top: -35px; // 💡 調整這個負值，直到花卉中心點剛好切齊上邊框線
       transform: translateX(-50%); // 修正置中偏移（不旋轉，維持原本樣式）
     }
+
+
+    .introduce-container {
+      padding: 0.5rem 1.5rem;
+
+      h3 {}
+
+      div {
+        margin-bottom: 1rem;
+        color: $color-ivory;
+      }
+    }
+
   }
 
   .infoCard {

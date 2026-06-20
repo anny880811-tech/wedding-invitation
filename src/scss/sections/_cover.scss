@@ -48,10 +48,9 @@
     }
 
     h1 {
-      line-height: 1.4;
+      line-height: 1;
       font-weight: 400;
       color: $color-ivory;
-      margin-bottom: 0.4rem;
       letter-spacing: .08em;
     }
   }
@@ -88,6 +87,7 @@
     font-size: 0.8rem;
     letter-spacing: 2px;
     margin: 0;
+    margin-bottom: 0.5rem;
 
     @media(min-width: 1024px) {
       font-size: 1.1rem;
@@ -101,11 +101,11 @@
     letter-spacing: 1px;
     line-height: 0.5;
     margin: 0;
+    margin-top: 0.5rem;
 
     @media(min-width: 1024px) {
       font-size: 1.4rem;
       letter-spacing: 3px;
     }
   }
-
 }

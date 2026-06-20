@@ -1,4 +1,3 @@
-// import flowers03 from '../assets/flowers03.png'
 import flowers07 from "../assets/flowers07.png"
 const WeddingInfo = () => {
   const weddingInfoData = [
@@ -6,27 +5,24 @@ const WeddingInfo = () => {
       icon: <i className="bi bi-calendar-week i-dark gold-text"></i>,
       title: '日期',
       value: '2027.01.24',
-      description: 'Sunday',
-      // illustration: blue03,
+      description: ' (日) Sunday',
     },
     {
       icon: <i className="bi bi-clock i-dark gold-text"></i>,
       title: '時間',
-      value: '17:30 Ceremony',
-      description: '18:30 Reception',
-      // illustration: blue01,
+      value: '16:30 結婚典禮 Ceremony',
+      description: '18:30 喜宴時間 Reception',
     },
     {
       icon: <i className="bi bi-geo-alt i-dark gold-text"></i>,
       title: '地點',
-      value: 'HOMM Saranam Baturiti',
-      description: 'Bali,Indonesia',
+      value: 'HOMM Saranam Baturiti 度假村',
+      description: '',
       mapUrl: 'https://maps.app.goo.gl/N4PrS8erK5nMvFSQ7',
     },
   ]
   return (<>
-    <div className="weddingInfo-custom dark-section">
-      {/* <img src={flowers03} className="flower-bg flower-top-left" alt="" /> */}
+    <div className="weddingInfo-custom dark-section dark-bg-wrapper">
       <div className="section-title-dark gold-text">WEDDING INFORMATION</div>
       <h3 className="section-header-dark">婚禮資訊</h3>
       <div className="section-content">
@@ -51,9 +47,25 @@ const WeddingInfo = () => {
             </div>)}
           </div>)
         })}
+        <div>
+          <h3 className="gold-text">HOMM Saranam Baturiti 度假村</h3>
+          <div className="introduce-container">
+            <div className="">不同於人們對峇里島熱帶海灘的印象，貝都古(Bedugul)是一座以涼爽氣候、蓊鬱森林與寧靜氛圍聞名的高山地區。坐落於雲霧繚繞的山谷之中，環抱著壯麗的山景與自然風光，度假村為賓客提供一處遠離喧囂、沉浸於大自然的靜謐天地。我們選擇在這個特別的地方舉辦婚禮，期盼能與摯愛的家人與朋友，共同度過一個難忘而美好的週末，在峇里島高地的自然美景中分享喜悅與祝福。</div>
+            <div className="en">Unlike the tropical beaches commonly associated with Bali, Bedugul is a charming mountain region known for its cool weather, lush forests, and peaceful atmosphere. <br />
+              Nestled among misty valleys and scenic mountain views, HOMM Saranam Baturiti offers a tranquil escape where nature and serenity come together. We chose this special place to celebrate our wedding, hoping to share a memorable weekend with our family and friends surrounded by the beauty of Bali's highlands.
+            </div>
+          </div>
+        </div>
       </div>
-      {/* <img src={flowers03} className="flower-bg flower-bottom-right" alt="" /> */}
-      <div className="anti-line-tape"></div>
+      {/*      <div className="section-content">
+          <h3 className="gold-text">HOMM Saranam Baturiti 度假村</h3>
+          <div className="introduce-container">
+            <div className="">不同於人們對峇里島熱帶海灘的印象，貝都古(Bedugul)是一座以涼爽氣候、蓊鬱森林與寧靜氛圍聞名的高山地區。坐落於雲霧繚繞的山谷之中，環抱著壯麗的山景與自然風光，度假村為賓客提供一處遠離喧囂、沉浸於大自然的靜謐天地。我們選擇在這個特別的地方舉辦婚禮，期盼能與摯愛的家人與朋友，共同度過一個難忘而美好的週末，在峇里島高地的自然美景中分享喜悅與祝福。</div>
+            <div className="en">Unlike the tropical beaches commonly associated with Bali, Bedugul is a charming mountain region known for its cool weather, lush forests, and peaceful atmosphere. <br />
+              Nestled among misty valleys and scenic mountain views, HOMM Saranam Baturiti offers a tranquil escape where nature and serenity come together. We chose this special place to celebrate our wedding, hoping to share a memorable weekend with our family and friends surrounded by the beauty of Bali's highlands.
+            </div>
+          </div>
+        </div> */}
     </div>
   </>)
 }

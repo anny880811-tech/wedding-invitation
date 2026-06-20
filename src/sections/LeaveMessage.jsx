@@ -38,8 +38,8 @@ const LeaveMessage = () => {
 
   return (<>
     <div className="leaveMessage-custom">
-      <div className="section-title">Wedding Wish</div>
-      <h3 className="section-header">給我們的祝福</h3>
+      <div className="section-title">Leave a Message</div>
+      <h3 className="section-header">自由留言板</h3>
       <div className="section-heading__divider"></div>
       <div className="wish-container">
         <div>
@@ -47,7 +47,7 @@ const LeaveMessage = () => {
         </div>
         <div className="input-group">
           <input type="text" name="" id="" className="name" placeholder="名字 Name" />
-          <textarea type="text" name="" id="" className="wishes" placeholder="給我們的祝福 Wishes" />
+          <textarea type="text" name="" id="" className="wishes" placeholder="留下您想說的話 Leave your message..." />
         </div>
         <button type="submit" className="wish-btn">送出 Send</button>
       </div>

@@ -13,28 +13,28 @@ import LeaveMessage from "./sections/LeaveMessage";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false)
-  const [imgLoaded, setImgLoaded] = useState(false)  
+  const [imgLoaded, setImgLoaded] = useState(false)
   return (
     <>
-    {!imgLoaded && (
+      {!imgLoaded && (
         <div className="cover-loading">
           <p>載入中...</p>
         </div>
       )}
       <div className={`main-layout ${isOpen ? 'is-open' : ''}`}>
-        <Cover 
-        onOpen={() => { setIsOpen(true) }} 
-        onImgLoaded={() => setImgLoaded(true)} 
+        <Cover
+          onOpen={() => { setIsOpen(true) }}
+          onImgLoaded={() => setImgLoaded(true)}
         />
         <div className="content-section">
           <Hero />
-          <WeddingInfo />
-          <WeddingHospitality />
+            <WeddingInfo />
+            <WeddingHospitality />
           <Gallery />
           <RSVP />
           <TravelGuide />
           <DressGuide />
-          <LeaveMessage/>
+          <LeaveMessage />
           <Footer />
         </div>
       </div>

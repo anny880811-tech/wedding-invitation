@@ -18,6 +18,13 @@
     margin-top: 1rem;
     font-family: $font-zh-sans;
 
+    .warn-text {
+      margin-top: 0.2rem;
+      color: $color-burgundy;
+      font-weight: 600;
+
+    }
+
     p {
       line-height: 1.4;
     }
@@ -25,6 +32,11 @@
     .form-group {
       margin-top: 1.2rem;
       text-align: start;
+
+      .en {
+        margin-top: 0.2rem;
+        line-height: 1.2;
+      }
 
       // 統一所有輸入框高度
       .react-select__control {
@@ -60,6 +72,7 @@
           label {
             margin: 0;
             font-size: 14px;
+            line-height: 1.3;
           }
 
           input {
@@ -78,13 +91,15 @@
 
         div {
           display: flex;
-          align-items: center;
+          align-items: flex-start; 
           gap: 0.3rem;
 
           .checkbox {
             margin: 0;
+            margin-top: 5px;
             height: 1rem;
             width: 1rem;
+            flex-shrink: 0; 
             accent-color: $color-burgundy;
           }
 
@@ -99,6 +114,11 @@
         margin-top: 0.3rem;
         box-sizing: border-box;
         padding: 1rem;
+      }
+
+      span.en {
+        color: $color-charcoal;
+        font-size: 14px;
       }
 
       span {
@@ -148,6 +168,8 @@
 
       .content {
         color: $color-slate-blue;
+      }
+      .en{
         margin-bottom: 1rem;
       }
 
@@ -155,6 +177,10 @@
         padding: 1rem;
         border-radius: 1rem;
         margin-bottom: 1rem;
+        background-image:
+          url('https://images.unsplash.com/photo-1612863409288-c1242bd911ec?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        background-size: cover;
+        background-blend-mode: multiply;
       }
 
       .a {

@@ -10,6 +10,7 @@ const Cover = ({ onOpen, onImgLoaded }) => {
       <div className="cover-text">
         <h5 className="cover-subtitle">THE WEDDING OF</h5>
         <h1 className="title">韋昊良 ＆ 呂易庭</h1>
+        <h1 className="title">Beni & Yiting</h1>
         <p>2027.01.23</p>
       </div>
       <div className="cover-btn-wrapper">

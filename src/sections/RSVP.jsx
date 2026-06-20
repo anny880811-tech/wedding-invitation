@@ -84,7 +84,6 @@ const RSVP = () => {
       travelPlanDate: null,
       allergyStatus: "",
       needStatus: "",
-      regularTravelStatus: "",
     }
   })
   const onSubmit = async (data) => {
@@ -106,7 +105,6 @@ const RSVP = () => {
     }
   }
   const allergyStatus = watch('allergyStatus')
-  const regularTravelStatus = watch('regularTravelStatus')
   const needStatus = watch('needStatus')
   const joinStatus = watch('joinStatus')
   return (<>
@@ -117,28 +115,33 @@ const RSVP = () => {
       <div className="form-container">
         <p>為了讓我們更好的安排一切</p>
         <p>請協助填寫以下資料</p>
-        <p>請於 9/30 前填寫完成</p>
+        <p className="warn-text">於8/31前填寫完成</p>
+        <p className="en">To help us make the necessary arrangements, <br />
+          please complete the information below.</p>
+        <p className="en warn-text">Kindly submit your response
+          by August 31.</p>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="form-custom">
             <div className="form-group">
               <div>請問是否參加我們的婚禮？</div>
+              <div className="en">Will you be attending our wedding?</div>
               <div className="checkbox-group">
                 <div>
                   <input type="radio" className="checkbox" id="join" value="yes" {...register('joinStatus', {
                     required: '請選擇是否參加婚禮',
                   })} />
-                  <label htmlFor="join">我會參加</label>
+                  <label htmlFor="join">我會參加<span className="en" style={{ display: 'block' }}>I will attend</span></label>
                 </div>
                 <div>
                   <input type="radio" className="checkbox" id="noJoin" value='no' {...register('joinStatus')} />
-                  <label htmlFor="noJoin">無法參加</label>
+                  <label htmlFor="noJoin">無法參加 <span className="en" style={{ display: 'block' }}>I am unable to attend</span></label>
                 </div>
               </div>
               <span>{errors.joinStatus ? errors.joinStatus.message : ''}</span>
             </div>
             {joinStatus === 'yes' && (<>
               <div className="form-group">
-                <label htmlFor="statistics">1. 參加人數</label>
+                <label htmlFor="statistics">1. 參加人數<br /> Guest Count</label>
                 <Controller
                   control={control}
                   name="statistics"
@@ -159,17 +162,17 @@ const RSVP = () => {
                 )}
               </div>
               <div className="form-group">
-                <label htmlFor="email">2. Email <br /> (詳細活動於婚禮前1個月email通知)</label>
+                <label htmlFor="email">2. Email <br /> (詳細活動於婚禮前1個月email通知) <br className="en" />Detailed event information will be sent via email one month before the wedding.</label>
                 <input type="text" id="email" placeholder="請填寫您的Email" {...register('email', {
                   required: '請填寫您的Email'
                 })} />
                 <span>{errors.email ? errors.email.message : ''}</span>
               </div>
               <div className="form-group">
-                <div>3. 抵達峇里島的時間＆航班資訊</div>
+                <div>3. 抵達峇里島的時間＆航班資訊 <br />Arrival Information</div>
                 <div className="flight-group">
                   <div className="form-field">
-                    <label htmlFor="arrivalDate">抵達日期</label>
+                    <label htmlFor="arrivalDate">抵達日期 <br />Arrival Date</label>
                     <Controller
                       control={control}
                       name="arrivalDate"
@@ -188,7 +191,7 @@ const RSVP = () => {
                     )}
                   </div>
                   <div className="form-field">
-                    <label htmlFor="arrivalTime">抵達時間</label>
+                    <label htmlFor="arrivalTime">抵達時間 <br />Arrival Time</label>
                     <Controller
                       control={control}
                       name="arrivalTime"
@@ -211,14 +214,14 @@ const RSVP = () => {
                 </div>
                 <div className="flight-group">
                   <div className="form-field">
-                    <label htmlFor="arrivalAirlines">航空資訊</label>
+                    <label htmlFor="arrivalAirlines">航空資訊 <br />Airline</label>
                     <input type="text" id="arrivalAirlines" placeholder="請輸入航空公司" {...register('arrivalAirlines', {
                       required: '請填寫航空資訊'
                     })} />
                     <span>{errors.arrivalAirlines ? errors.arrivalAirlines.message : ''}</span>
                   </div>
                   <div className="form-field">
-                    <label htmlFor="arrivalFlightNumber">航空編號</label>
+                    <label htmlFor="arrivalFlightNumber">航空編號 <br /> Flight Number</label>
                     <input type="text" id="arrivalFlightNumber" placeholder="請輸入航空編號" {...register('arrivalFlightNumber', {
                       required: '請填寫航空編號',
                     })} />
@@ -227,10 +230,10 @@ const RSVP = () => {
                 </div>
               </div>
               <div className="form-group">
-                <div>4. 離開峇里島的時間＆航班資訊</div>
+                <div>4. 離開峇里島的時間＆航班資訊<br />Departure Information</div>
                 <div className="flight-group">
                   <div className="form-field">
-                    <label htmlFor="departureDate">離開日期</label>
+                    <label htmlFor="departureDate">離開日期<br />Departure Date</label>
                     <Controller
                       control={control}
                       name="departureDate"
@@ -249,7 +252,7 @@ const RSVP = () => {
                     )}
                   </div>
                   <div className="form-field">
-                    <label htmlFor="departureTime">離開時間</label>
+                    <label htmlFor="departureTime">離開時間<br />Departure Time</label>
                     <Controller
                       control={control}
                       name="departureTime"
@@ -274,14 +277,14 @@ const RSVP = () => {
                 </div>
                 <div className="flight-group">
                   <div className="form-field">
-                    <label htmlFor="departureAirline">航空資訊</label>
+                    <label htmlFor="departureAirline">航空資訊<br />Airline</label>
                     <input type="text" id="departureAirline" placeholder="請輸入航空公司" {...register('departureAirline', {
                       required: '請填寫航空資訊',
                     })} />
                     <span>{errors.departureAirline ? errors.departureAirline.message : ''}</span>
                   </div>
                   <div className="form-field">
-                    <label htmlFor="departureFlightNumber">航空編號</label>
+                    <label htmlFor="departureFlightNumber">航空編號<br />Flight Number</label>
                     <input type="text" id="departureFlightNumber" placeholder="請輸入航空編號" {...register('departureFlightNumber', {
                       required: '請填寫航空編號',
                     })} />
@@ -290,15 +293,15 @@ const RSVP = () => {
                 </div>
               </div>
               <div className="form-group">
-                <div>5. 是否對任何食物過敏？</div>
+                <div>5. 是否對任何食物過敏？<br />Do you have any food allergies or dietary restrictions?</div>
                 <div className="checkbox-group">
                   <div>
                     <input type="radio" className="checkbox" id="noAllergies" value="none" {...register('allergyStatus', { required: '請選擇是否有食物過敏', })} />
-                    <label htmlFor="noAllergies">無</label>
+                    <label htmlFor="noAllergies">無 No</label>
                   </div>
                   <div>
                     <input type="radio" className="checkbox" id="allergies" value='yes' {...register('allergyStatus')} />
-                    <label htmlFor="allergies">有 (請說明)</label>
+                    <label htmlFor="allergies">有 (請說明)<span className="en" style={{ display: 'block' }}>Yes (please specify)</span></label>
 
                   </div>
                 </div>
@@ -307,15 +310,15 @@ const RSVP = () => {
                 <span>{errors.allergyContent ? errors.allergyContent.message : ''}</span>
               </div>
               <div className="form-group">
-                <div>6. 是否有其他特殊需求？</div>
+                <div>6. 是否有其他特殊需求？<br />Do you have any special requests or requirements?</div>
                 <div className="checkbox-group">
                   <div>
                     <input type="radio" className="checkbox" id="noNeed" value='none' {...register('needStatus', { required: '請選擇是否有特殊需求', })} />
-                    <label htmlFor="noNeed">無</label>
+                    <label htmlFor="noNeed">無 No</label>
                   </div>
                   <div>
                     <input type="radio" className="checkbox" id="need" value='yes' {...register('needStatus')} />
-                    <label htmlFor="need">有 (請說明)</label>
+                    <label htmlFor="need">有 (請說明)<span className="en" style={{ display: 'block' }}>Yes (please specify)</span></label>
                   </div>
                 </div>
                 <span>{errors.needStatus ? errors.needStatus.message : ''}</span>
@@ -341,30 +344,38 @@ const RSVP = () => {
               <div className="form-group">
                 <div>7. 1/24在婚禮開始之前，我們誠摯邀請您依照自己的步調，感受貝都古高地的自然之美(請擇一)
                 </div>
+                <div className="en">On January 24, prior to the wedding ceremony, we warmly invite you to explore the natural beauty of the Bedugul highlands at your own pace. Please choose one of the following options:</div>
                 <div className="checkbox-group">
                   <div>
                     <input type="radio" className="checkbox" id="aJourney" value="A" {...register('journeyStatus')} />
-                    <label htmlFor="aJourney" className="a">A 行程</label>
+                    <label htmlFor="aJourney" className="a">A 行程<span className="en" style={{ display: 'block' }}>A. Resort Day</span></label>
                   </div>
                   <div>
                     <input type="radio" className="checkbox" id="bJourney" value='B' {...register('journeyStatus')} />
-                    <label htmlFor="bJourney" className="b">B 行程</label>
+                    <label htmlFor="bJourney" className="b">B 行程<span className="en" style={{ display: 'block' }}>B. Exploration Day</span></label>
                   </div>
                 </div>
                 <div className="tour-custom">
                   <div className="content">無論您選擇在度假村放鬆休憩，或是探索周邊風景，我們都希望您能盡情享受留下美好的回憶</div>
+                  <div className="en content">Whether you choose to unwind at the resort or explore the surrounding area, we hope you enjoy a memorable and wonderful experience.</div>
 
                   <div className="tour a">
                     A 行程 <br />
+                    <span className="en" style={{ display: 'block',color:'white' }}>A. Resort Day</span>
                     在度假村享受愜意時光，體驗度假村提供的設施、活動與餐飲服務。<br />
+                    <span className="en" style={{ display: 'block',color:'white' }}>Enjoy a relaxing day at the resort, and make the most of its facilities, activities, and dining services.</span>
+                    
                     <a href='https://www.hommhotels.com/hotels/homm-saranam-baturiti#offers-linked' target="_blank" rel="noreferrer" className="tour-link">
-                      查看更多資訊 <i className="bi bi-chevron-right"></i>
+                      更多資訊 Learn More <i className="bi bi-chevron-right"></i>
                     </a>
                   </div>
                   <div className="tour b">
-                    B 行程<br />造訪貝都古周邊最具代表性的景點與在地體驗
+                    B 行程
+                    <span className="en" style={{ display: 'block', color:'white' }}>B. Exploration Day</span>
+                    造訪貝都古周邊最具代表性的景點與在地體驗
+                    <span className="en" style={{ display: 'block',color:'white' }}>Explore some of Bedugul’s most iconic attractions and local experiences.</span>
                     <ul>
-                      <li>草莓農園</li>
+                      <li>草莓農園(Strawberry Farms)</li>
                       <li>烏倫達努布拉坦寺(Ulun Danu Beratan Temple)與布拉坦湖(Bratan lake)</li>
                       <li>峇里植物園(Bali Botanical Garden)</li>
                       <li>峇里農場莊園(Bali Farm House)</li>
@@ -373,7 +384,7 @@ const RSVP = () => {
                 </div>
               </div>
             </>)}
-            <button type="submit" className="form-btn" disabled={isSubmitting}>{isSubmitting ? '表單送出中...' : '送出回覆'}</button>
+            <button type="submit" className="form-btn" disabled={isSubmitting}>{isSubmitting ? '表單送出中... Submitting...' : '送出回覆 Submit Response'}</button>
           </div>
         </form>
       </div>
