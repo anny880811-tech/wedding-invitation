@@ -2,62 +2,37 @@
   min-height: 100vh;
 }
 
-// main-layout 外層容器控制
-.main-layout {
-  display: flex;
-  flex-direction: column; // 預設（手機版）：上下排列
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+.site-layout {
+  width: 100%;
+}
 
-  // ==========================================
-  // 1. 預設樣式（手機版邏輯）
-  // ==========================================
-  .invitation-container {
-    width: 100%;
-    height: 100vh;
-    flex-shrink: 0;
-    transition: transform 0.6s ease-in-out;
-  }
-
-  .content-section {
-    display: none;
-  }
-
-  // 手機版點擊按鈕後（App 加上 .is-open 類別）
-  &.is-open {
-    .invitation-container {
-      display: none; // 隱藏封面
-    }
-    .content-section {
-      display: flex; // 顯示內容
-    }
-  }
+.site-left {
+  display: none;
 
   @media (min-width: 1024px) {
-    flex-direction: row;
-    .invitation-container {
-      width: 70%;
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 67%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1;
+  }
 
-      .cover-btn {
-        display: none;
-      }
-    }
-
-    .content-section {
-      display: flex;
-      width: 30%;
-    }
-
-    // 預防萬一：防止電腦版時若殘留 .is-open 類別導致結構出錯
-    &.is-open {
-      .invitation-container {
-        display: flex;
-      }
-    }
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 47% center;
   }
 }
-// .content-custom{
-//   flex-direction: column;
-//   overflow-y: auto;
-// }
+
+.site-right {
+  width: 100%;
+
+  @media (min-width: 1024px) {
+    margin-left: 67%;
+    width: 33%;
+  }
+}

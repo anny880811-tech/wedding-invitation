@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Cover from "./sections/Cover";
 import Hero from "./sections/Hero";
 import WeddingInfo from "./sections/WeddingInfo";
@@ -9,27 +9,73 @@ import TravelGuide from "./sections/TravelGuide";
 import DressGuide from "./sections/DressGuide";
 import Footer from "./sections/Footer";
 import LeaveMessage from "./sections/LeaveMessage";
+import AudioPlayer from "./components/AudioPlayer";
+import weddingPhoto from "./assets/TRE_2314.webp";
 
 
 function App() {
   const [isOpen, setIsOpen] = useState(false)
   const [imgLoaded, setImgLoaded] = useState(false)
+  const [playing, setPlaying] = useState(false)
+  const audioRef = useRef(null)
+
+  const handleOpen = () => {
+    setIsOpen(true)
+    setPlaying(true)
+    if (audioRef.current) {
+      audioRef.current.play().catch(() => { })
+    }
+  }
+  const handlePlay = () => {
+    if (audioRef.current) {
+      audioRef.current.play().catch(() => { })
+    }
+    setPlaying(true)
+  }
+  useEffect(() => {
+    const handleVisibility = () => {
+      if (!audioRef.current) return
+      if (document.hidden) {
+        audioRef.current.pause()
+      } else if (playing) {
+        audioRef.current.play()
+      }
+    }
+    document.addEventListener('visibilitychange', handleVisibility)
+    return () => document.removeEventListener('visibilitychange', handleVisibility)
+  }, [playing])
+
   return (
     <>
+      <div style={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 100,
+        pointerEvents: isOpen ? 'none' : 'auto',
+        visibility: isOpen ? 'hidden' : 'visible'
+      }}>
+        <Cover
+          onOpen={handleOpen}
+          onImgLoaded={() => setImgLoaded(true)}
+          onPlay={handlePlay}
+        />
+      </div>
       {!imgLoaded && (
         <div className="cover-loading">
           <p>載入中...</p>
         </div>
       )}
-      <div className={`main-layout ${isOpen ? 'is-open' : ''}`}>
-        <Cover
-          onOpen={() => { setIsOpen(true) }}
-          onImgLoaded={() => setImgLoaded(true)}
-        />
-        <div className="content-section">
+      <div className="site-layout">
+
+        {/* 左側固定圖片（手機隱藏） */}
+        <div className="site-left">
+          <img src={weddingPhoto} alt="" className="site-left__img" />
+        </div>
+
+        <div className="site-right">
           <Hero />
-            <WeddingInfo />
-            <WeddingHospitality />
+          <WeddingInfo />
+          <WeddingHospitality />
           <Gallery />
           <RSVP />
           <TravelGuide />
@@ -38,6 +84,7 @@ function App() {
           <Footer />
         </div>
       </div>
+      <AudioPlayer playing={playing} setPlaying={setPlaying} audioRef={audioRef} />
     </>
   )
 }

@@ -18,6 +18,10 @@
     margin-top: 1rem;
     font-family: $font-zh-sans;
 
+    .remind {
+      text-align: center;
+    }
+
     .warn-text {
       margin-top: 0.2rem;
       color: $color-burgundy;
@@ -91,7 +95,7 @@
 
         div {
           display: flex;
-          align-items: flex-start; 
+          align-items: flex-start;
           gap: 0.3rem;
 
           .checkbox {
@@ -99,7 +103,7 @@
             margin-top: 5px;
             height: 1rem;
             width: 1rem;
-            flex-shrink: 0; 
+            flex-shrink: 0;
             accent-color: $color-burgundy;
           }
 
@@ -169,7 +173,8 @@
       .content {
         color: $color-slate-blue;
       }
-      .en{
+
+      .en {
         margin-bottom: 1rem;
       }
 

@@ -113,13 +113,15 @@ const RSVP = () => {
       <h3 className="section-header">賓客登記</h3>
       <div className="section-heading__divider"></div>
       <div className="form-container">
-        <p>為了讓我們更好的安排一切</p>
-        <p>請協助填寫以下資料</p>
-        <p className="warn-text">於8/31前填寫完成</p>
-        <p className="en">To help us make the necessary arrangements, <br />
-          please complete the information below.</p>
-        <p className="en warn-text">Kindly submit your response
-          by August 31.</p>
+        <div className="remind">
+          <p>為了讓我們更好的安排一切</p>
+          <p>請協助填寫以下資料</p>
+          <p className="warn-text">於8/31前填寫完成</p>
+          <p className="en">To help us make the necessary arrangements, <br />
+            please complete the information below.</p>
+          <p className="en warn-text">Kindly submit your response
+            by August 31.</p>
+        </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="form-custom">
             <div className="form-group">
@@ -361,19 +363,19 @@ const RSVP = () => {
 
                   <div className="tour a">
                     A 行程 <br />
-                    <span className="en" style={{ display: 'block',color:'white' }}>A. Resort Day</span>
+                    <span className="en" style={{ display: 'block', color: 'white' }}>A. Resort Day</span>
                     在度假村享受愜意時光，體驗度假村提供的設施、活動與餐飲服務。<br />
-                    <span className="en" style={{ display: 'block',color:'white' }}>Enjoy a relaxing day at the resort, and make the most of its facilities, activities, and dining services.</span>
-                    
+                    <span className="en" style={{ display: 'block', color: 'white' }}>Enjoy a relaxing day at the resort, and make the most of its facilities, activities, and dining services.</span>
+
                     <a href='https://www.hommhotels.com/hotels/homm-saranam-baturiti#offers-linked' target="_blank" rel="noreferrer" className="tour-link">
                       更多資訊 Learn More <i className="bi bi-chevron-right"></i>
                     </a>
                   </div>
                   <div className="tour b">
                     B 行程
-                    <span className="en" style={{ display: 'block', color:'white' }}>B. Exploration Day</span>
+                    <span className="en" style={{ display: 'block', color: 'white' }}>B. Exploration Day</span>
                     造訪貝都古周邊最具代表性的景點與在地體驗
-                    <span className="en" style={{ display: 'block',color:'white' }}>Explore some of Bedugul’s most iconic attractions and local experiences.</span>
+                    <span className="en" style={{ display: 'block', color: 'white' }}>Explore some of Bedugul’s most iconic attractions and local experiences.</span>
                     <ul>
                       <li>草莓農園(Strawberry Farms)</li>
                       <li>烏倫達努布拉坦寺(Ulun Danu Beratan Temple)與布拉坦湖(Bratan lake)</li>

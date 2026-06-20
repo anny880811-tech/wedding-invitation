@@ -11,6 +11,102 @@
   height: 100vh;
   overflow: hidden;
   text-shadow: 0px 2px 12px rgba(0, 0, 0, 0.5);
+transition: transform 1.2s ease-in;
+
+  // ✅ 滑出動畫
+  &.slide-up {
+    transform: translateY(-100%);
+    pointer-events: none;
+  }
+
+  // ✅ 桌機版中央文字區塊
+  .cover-text--desktop {
+    display: none;
+
+    @media (min-width: 1024px) {
+      display: contents;
+
+
+      // 文字區塊放上方
+      .cover-text__names {
+        position: absolute;
+        top: 15%;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        line-height: 1;
+
+        h1.title {
+          color: $color-ivory;
+          font-size: 2.8rem;
+          font-weight: 400;
+          letter-spacing: 0.08em;
+          line-height: 1;
+          margin: 0;
+        }
+
+        p {
+          color: $color-ivory;
+          font-size: 1.4rem;
+          letter-spacing: 3px;
+          margin-top: 0.1rem;
+          line-height: 1;
+        }
+      }
+
+      // 按鈕放下方
+      .cover-btn-desktop {
+        position: absolute;
+        bottom: 12%;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+      }
+    }
+
+    h5 {
+      font-size: 1.1rem;
+      letter-spacing: 4px;
+      color: $color-ivory;
+      margin-bottom: 0.5rem;
+    }
+
+    h1.title {
+      color: $color-ivory;
+      font-size: 2.8rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      line-height: 1.1;
+    }
+
+    p {
+      color: $color-ivory;
+      font-size: 1.4rem;
+      letter-spacing: 3px;
+      margin-top: 0.5rem;
+      line-height: 1;
+    }
+
+    .cover-guest {
+      margin-top: 1.5rem;
+
+      &__label {
+        font-size: 1rem;
+        letter-spacing: 2px;
+        color: $color-ivory;
+        opacity: 0.85;
+        margin: 0;
+      }
+
+      &__name {
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: $color-ivory;
+        letter-spacing: 0.1em;
+        margin: 0.2rem 0 0;
+      }
+    }
+  }
 
   // ✅ 新增背景圖片樣式
   .cover-bg {
@@ -45,6 +141,7 @@
 
     @media (min-width: 1024px) {
       display: none;
+      top: 15%;
     }
 
     h1 {
@@ -66,6 +163,7 @@
 
     @media (min-width: 1024px) {
       display: none;
+      bottom: 25%;
     }
 
     h2 {

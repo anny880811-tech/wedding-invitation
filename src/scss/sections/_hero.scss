@@ -13,10 +13,10 @@
   background-size: cover;
   background-blend-mode: multiply;
   background-color: $color-ivory;
-  margin-bottom: 1px;
+  margin-bottom: 5px;
 
-  @media(min-width: 1024px) {
-    padding: 1.5rem 1.2rem 1.5rem 1.2rem;
+  @media (min-width: 1024px) {
+    flex-direction: column;
   }
 
 

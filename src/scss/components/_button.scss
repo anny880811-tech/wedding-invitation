@@ -7,10 +7,10 @@
   border-radius: 1.6rem;
   box-shadow: 5px 5px 20px rgba(109, 128, 138, 0.8);
   display: inline-block;
-
-  @media (min-width: 1024px) {
-    display: none;
-  }
+  cursor: pointer;
+  // @media (min-width: 1024px) {
+  //   display: none;
+  // }
 }
 
 .form-btn {
