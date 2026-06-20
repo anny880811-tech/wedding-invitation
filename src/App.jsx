@@ -62,7 +62,7 @@ function App() {
       </div>
       {!imgLoaded && (
         <div className="cover-loading">
-          <p>載入中...</p>
+          <p>載入中... 動畫待補</p>
         </div>
       )}
       <div className="site-layout">
