@@ -19,7 +19,7 @@
         flex: 1;
         aspect-ratio: 1/1;
         border-radius: 1rem;
-        background-color: rgb(188, 177, 167);
+        // background-color: rgb(188, 177, 167);
 
         .photo-s {
           width: 100%;
@@ -39,14 +39,14 @@
         flex: 1.2; // 橫式佔比較寬
         aspect-ratio: 4/3;
         border-radius: 1rem;
-        background-color: rgb(188, 177, 167);
+        // background-color: rgb(188, 177, 167);
       }
 
       .photo-portrait-container {
         flex: 0.8; // 直式佔比較窄
         aspect-ratio: 3/4;
         border-radius: 1rem;
-        background-color: rgb(188, 177, 167);
+        // background-color: rgb(188, 177, 167);
       }
 
       .photo-landscape-container,

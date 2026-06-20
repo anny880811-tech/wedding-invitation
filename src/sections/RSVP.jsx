@@ -322,7 +322,7 @@ const RSVP = () => {
                 {needStatus === 'yes' && (<textarea placeholder="例如：兒童座椅、輪椅協助等" {...register('needContent', { required: '請填寫您的需求', })}></textarea>)}
                 <span>{errors.needContent ? errors.needContent.message : ''}</span>
               </div>
-              <div className="form-group">
+              {/* <div className="form-group">
                 <div>7. 是否需要我們協助規畫婚禮以外的峇里島行程？</div>
                 <div className="checkbox-group">
                   <div>
@@ -337,31 +337,40 @@ const RSVP = () => {
                 <span>{errors.regularTravelStatus ? errors.regularTravelStatus.message : ''}</span>
                 {regularTravelStatus === 'yes' && (<textarea placeholder="請附上日期及需要的協助" {...register('regularTravelContent', { required: '請填寫日期及需要的協助', })}></textarea>)}
                 <span>{errors.regularTravelContent ? errors.regularTravelContent.message : ''}</span>
-              </div>
+              </div> */}
               <div className="form-group">
-                <div>8. 飯店活動報名(可複選)</div>
+                <div>7. 1/24在婚禮開始之前，我們誠摯邀請您依照自己的步調，感受貝都古高地的自然之美(請擇一)
+                </div>
                 <div className="checkbox-group">
                   <div>
-                    <input type="checkbox" className="checkbox" id="aJourney" value="A" {...register('journeyStatus')} />
-                    <label htmlFor="aJourney">A行程</label>
+                    <input type="radio" className="checkbox" id="aJourney" value="A" {...register('journeyStatus')} />
+                    <label htmlFor="aJourney" className="a">A 行程</label>
                   </div>
                   <div>
-                    <input type="checkbox" className="checkbox" id="bJourney" value='B' {...register('journeyStatus')} />
-                    <label htmlFor="bJourney">B行程</label>
-                  </div>
-                  <div>
-                    <input type="checkbox" className="checkbox" id="cJourney" value='C' {...register('journeyStatus')} />
-                    <label htmlFor="cJourney">C行程</label>
-                  </div>
-                  <div>
-                    <input type="checkbox" className="checkbox" id="dJourney" value='D' {...register('journeyStatus')} />
-                    <label htmlFor="dJourney">D行程</label>
+                    <input type="radio" className="checkbox" id="bJourney" value='B' {...register('journeyStatus')} />
+                    <label htmlFor="bJourney" className="b">B 行程</label>
                   </div>
                 </div>
-              </div>
-              <div className="form-group">
-                <label htmlFor="blessings">9. 給我們的祝福</label>
-                <textarea id="blessings" placeholder="寫下您想對我們說的話..." {...register('blessings')}></textarea>
+                <div className="tour-custom">
+                  <div className="content">無論您選擇在度假村放鬆休憩，或是探索周邊風景，我們都希望您能盡情享受留下美好的回憶</div>
+
+                  <div className="tour a">
+                    A 行程 <br />
+                    在度假村享受愜意時光，體驗度假村提供的設施、活動與餐飲服務。<br />
+                    <a href='https://www.hommhotels.com/hotels/homm-saranam-baturiti#offers-linked' target="_blank" rel="noreferrer" className="tour-link">
+                      查看更多資訊 <i className="bi bi-chevron-right"></i>
+                    </a>
+                  </div>
+                  <div className="tour b">
+                    B 行程<br />造訪貝都古周邊最具代表性的景點與在地體驗
+                    <ul>
+                      <li>草莓農園</li>
+                      <li>烏倫達努布拉坦寺(Ulun Danu Beratan Temple)與布拉坦湖(Bratan lake)</li>
+                      <li>峇里植物園(Bali Botanical Garden)</li>
+                      <li>峇里農場莊園(Bali Farm House)</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </>)}
             <button type="submit" className="form-btn" disabled={isSubmitting}>{isSubmitting ? '表單送出中...' : '送出回覆'}</button>

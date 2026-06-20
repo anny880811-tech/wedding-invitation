@@ -1,6 +1,12 @@
-const Cover = ({ onOpen }) => {
+const Cover = ({ onOpen, onImgLoaded }) => {
   return (<>
     <div className="invitation-container">
+      <img
+        className="cover-bg"
+        src="/src/assets/TRE_2314.webp"
+        alt=""
+        onLoad={onImgLoaded}
+      />
       <div className="cover-text">
         <h5 className="cover-subtitle">THE WEDDING OF</h5>
         <h1 className="title">韋昊良 ＆ 呂易庭</h1>

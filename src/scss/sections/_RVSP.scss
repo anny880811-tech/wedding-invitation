@@ -51,6 +51,7 @@
         justify-content: space-between;
         gap: 1rem;
 
+
         .form-field {
           display: flex;
           flex: 1;
@@ -89,7 +90,6 @@
 
           label {
             margin: 0;
-            white-space: nowrap;
           }
         }
 
@@ -108,6 +108,66 @@
         color: rgb(153, 57, 57);
       }
     }
+
+    .tour-custom {
+      margin-top: 0.5rem;
+      color: $color-ivory;
+
+      .tour-link {
+        display: inline-block;
+        text-decoration: none;
+        margin-top: 0.5rem;
+        background-color: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        color: $color-ivory;
+        border-radius: 1.5rem;
+        font-size: 1rem;
+        font-weight: 500;
+        padding: 0.2rem 0.6rem;
+        display: inline-block;
+        white-space: nowrap;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: $color-ivory;
+          color: $color-slate-blue;
+
+          i {
+            color: $color-slate-blue;
+            -webkit-text-stroke: 0.3px $color-slate-blue;
+          }
+        }
+
+        i {
+          font-size: 1rem;
+          color: $color-ivory;
+          -webkit-text-stroke: 0.3px $color-ivory;
+
+        }
+      }
+
+      .content {
+        color: $color-slate-blue;
+        margin-bottom: 1rem;
+      }
+
+      .tour {
+        padding: 1rem;
+        border-radius: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .a {
+        background-color: $color-mist-blue;
+        box-shadow: 3px 3px 8px rgba(109, 128, 138, 0.5);
+      }
+
+      .b {
+        background-color: $color-plum;
+        box-shadow: 3px 3px 8px rgba(102, 83, 129, 0.5);
+      }
+    }
+
   }
 }
 

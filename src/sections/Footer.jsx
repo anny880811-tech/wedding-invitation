@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import img07 from '../assets/07.png'
+import img11 from '../assets/11.webp'
 const Footer = () => {
   // 1. 設定目標婚禮日期
   const TARGET_DATE = "2027-01-24T00:00:00";
@@ -39,28 +39,27 @@ const Footer = () => {
   }, []);
   return (<>
     <div className="footer-container">
-      <div className="footer-divider-flower"></div>
       <div className="footer-text-section">
         <h3>韋昊良 ＆ 呂易庭</h3>
-        <p className='gold-text'>2027.01.24</p>
+        <p>2027.01.24</p>
         {/* 倒數計時方塊區 */}
         <div className="footer-countdown">
           <div className="time-item">
-            <span>{timeLeft.days}</span>
-            <label>Days</label>
+            <span className='gold-text'>{timeLeft.days}</span>
+            <label className='gold-text'>Days</label>
           </div>
           <div className="time-item">
-            <span>{timeLeft.hours}</span>
-            <label>Hours</label>
+            <span className='gold-text'>{timeLeft.hours}</span>
+            <label className='gold-text'>Hours</label>
           </div>
           <div className="time-item">
-            <span>{timeLeft.minutes}</span>
-            <label>Minutes</label>
+            <span className='gold-text'>{timeLeft.minutes}</span>
+            <label className='gold-text'>Minutes</label>
           </div>
         </div>
       </div>
       <div className="footer-photo-wrapper">
-        <img src={img07} alt="頁尾婚紗照" />
+        <img src={img11} alt="頁尾婚紗照" />
       </div>
     </div>
   </>)

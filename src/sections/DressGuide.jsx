@@ -24,10 +24,9 @@ const DressGuide = () => {
       <h3 className="section-header">穿搭建議</h3>
       <div className="section-heading__divider"></div>
       <div className="section-content">
-        <p>我們希望每位賓客都能自在舒服</p>
-        <p>參與婚禮，因此沒有特別規定正式服裝。</p>
-        <p>如果不確定該如何準備，</p>
-        <p>我們建議可以穿著以下色系</p>
+        <p>我們推薦以下色系，因為它們與婚禮場地的自然景觀及整體佈置相得益彰，能夠共同營造溫暖且和諧的氛圍</p>
+        <p className="en">We recommend the following color palette, as it works harmoniously with the wedding venue’s natural surroundings and overall décor to create a warm and inviting atmosphere.</p>
+ 
       </div>
       <div className="color-container">
         {colorData.map((item, index) => {
@@ -43,10 +42,8 @@ const DressGuide = () => {
       <h3 className="section-header">我們的心意</h3>
       <div className="section-heading__divider"></div>
       <div className="section-content">
-        <p>感謝各位願意舟車勞頓參與我們的婚禮，</p>
-        <p>為了讓大家更輕鬆自在地享受這趟旅程，</p>
-        <p>我們負擔婚禮３天的住宿與部分餐食，</p>
-        <p>也不收禮金。</p>
+        <p>我們負擔婚禮3天2夜的住宿、部分餐食與機場接送</p>
+        <p></p>
       </div>
     </div>
   </>)
