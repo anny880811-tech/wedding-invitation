@@ -218,6 +218,11 @@
         gap: 1.5rem;
         margin-top: 0.3rem;
 
+        &.vertical {
+          flex-direction: column;
+          gap: 0.1rem;
+        }
+
         div {
           display: flex;
           align-items: flex-start;
@@ -240,7 +245,6 @@
             font-size: 14px;
           }
         }
-
       }
 
       input {
@@ -300,7 +304,7 @@
       }
 
       .content {
-        color: $color-slate-blue;
+        color: $color-oxblood;
       }
 
       .en {

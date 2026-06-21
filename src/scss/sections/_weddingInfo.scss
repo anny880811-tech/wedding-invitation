@@ -120,6 +120,7 @@
       flex: 1;
       text-align: start;
       color: $color-gold;
+     
 
       .card-title {
         margin-bottom: 0.3rem;
@@ -145,6 +146,9 @@
         i {
           font-size: 1rem;
         }
+      }
+      p{
+         font-family: $font-en-body,$font-zh-sans;
       }
     }
   }

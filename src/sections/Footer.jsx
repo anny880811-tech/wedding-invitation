@@ -40,7 +40,8 @@ const Footer = () => {
   return (<>
     <div className="footer-container">
       <div className="footer-text-section">
-        <h3>韋昊良 ＆ 呂易庭</h3>
+        <h4>韋昊良 ＆ 呂易庭</h4>
+        <h4 >Beni & Yiting</h4>
         <p>2027.01.24</p>
         {/* 倒數計時方塊區 */}
         <div className="footer-countdown">
@@ -58,6 +59,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      <div className="footer-content">With love and gratitude,
+        Beni & Yiting</div>
       <div className="footer-photo-wrapper">
         <img src={img11} alt="頁尾婚紗照" />
       </div>

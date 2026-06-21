@@ -105,7 +105,6 @@ const RSVP = () => {
     setConfirmModal(true)
   }
 
-  // modal 確認 → 真正送出
   const handleConfirm = async () => {
     setIsSubmitting(true)
     try {
@@ -120,11 +119,11 @@ const RSVP = () => {
     }
   }
 
-
   const allergyStatus = watch('allergyStatus')
   const needStatus = watch('needStatus')
   const joinStatus = watch('joinStatus')
-
+  const departureInfoStatus = watch('departureInfoStatus')
+  const arrivalInfoStatus = watch('arrivalInfoStatus')
   if (isSubmitted) {
     return (
       <div className="RSVP-custom">
@@ -154,16 +153,16 @@ const RSVP = () => {
             ) : (
               <table className="modal-table">
                 <tbody>
-                  <tr><td>姓名 name</td><td>{pendingData.name}</td></tr>  
+                  <tr><td>姓名 name</td><td>{pendingData.name}</td></tr>
                   <tr><td>參加人數 Guest Count</td><td>{pendingData.statistics} 人</td></tr>
                   <tr><td>信箱 Email</td><td>{pendingData.email}</td></tr>
                   <tr>
                     <td>抵達 Arrival</td>
-                    <td>{pendingData.arrivalDate} {pendingData.arrivalTime}<br />{pendingData.arrivalAirlines} {pendingData.arrivalFlightNumber}</td>
+                    <td>{pendingData.arrivalDate} {pendingData.arrivalTime}<br />{pendingData.arrivalInfoStatus}</td>
                   </tr>
                   <tr>
                     <td>離開 Departure</td>
-                    <td>{pendingData.departureDate} {pendingData.departureTime}<br />{pendingData.departureAirline} {pendingData.departureFlightNumber}</td>
+                    <td>{pendingData.departureDate} {pendingData.departureTime}<br />{pendingData.departureInfoStatus}</td>
                   </tr>
                   <tr>
                     <td>食物過敏 Allergy</td>
@@ -262,7 +261,7 @@ const RSVP = () => {
                 <span>{errors.email ? errors.email.message : ''}</span>
               </div>
               <div className="form-group">
-                <div>4. 抵達峇里島的時間＆航班資訊 <br />Arrival Information</div> 
+                <div>4. 抵達峇里島的時間＆航班資訊 <br />Arrival Information</div>
                 <div className="flight-group">
                   <div className="form-field">
                     <label htmlFor="arrivalDate">抵達日期 <br />Arrival Date</label>
@@ -305,21 +304,25 @@ const RSVP = () => {
                     )}
                   </div>
                 </div>
-                <div className="flight-group">
-                  <div className="form-field">
-                    <label htmlFor="arrivalAirlines">航空資訊 <br />Airline</label>
-                    <input type="text" id="arrivalAirlines" placeholder="請輸入航空公司" {...register('arrivalAirlines', {
-                      required: '請填寫航空資訊'
-                    })} />
-                    <span>{errors.arrivalAirlines ? errors.arrivalAirlines.message : ''}</span>
+                <div className="form-group">
+                  <div>請選擇抵達航空資訊？<br />Share your flight details?</div>
+                  <div className="checkbox-group vertical">
+                    <div>
+                      <input type="radio" className="checkbox" id="CI771" value="中華航空  航班CI771" {...register('arrivalInfoStatus', { required: '請選擇抵達航空資訊', })} />
+                      <label htmlFor="CI771">中華航空  航班CI771</label>
+                    </div>
+                    <div>
+                      <input type="radio" className="checkbox" id="BR255" value="長榮航空  航班BR255" {...register('arrivalInfoStatus')} />
+                      <label htmlFor="BR255">長榮航空  航班BR255</label>
+                    </div>
+                    <div>
+                      <input type="radio" className="checkbox" id="otherArrivalInfo" value='other' {...register('arrivalInfoStatus')} />
+                      <label htmlFor="otherArrivalInfo">其他 (請說明)<span className="en" style={{ display: 'block' }}>other (please specify)</span></label>
+                    </div>
                   </div>
-                  <div className="form-field">
-                    <label htmlFor="arrivalFlightNumber">航班編號 <br /> Flight Number</label>
-                    <input type="text" id="arrivalFlightNumber" placeholder="請輸入航空編號" {...register('arrivalFlightNumber', {
-                      required: '請填寫航空編號',
-                    })} />
-                    <span>{errors.arrivalFlightNumber ? errors.arrivalFlightNumber.message : ''}</span>
-                  </div>
+                  <span>{errors.arrivalInfoStatus ? errors.arrivalInfoStatus.message : ''}</span>
+                  {arrivalInfoStatus === 'other' && (<textarea placeholder="例如：需轉機等等..." {...register('arrivalInfoContent', { required: '請填寫抵達航空資訊', })}></textarea>)}
+                  <span>{errors.arrivalInfoContent ? errors.arrivalInfoContent.message : ''}</span>
                 </div>
               </div>
               <div className="form-group">
@@ -368,21 +371,25 @@ const RSVP = () => {
                     )}
                   </div>
                 </div>
-                <div className="flight-group">
-                  <div className="form-field">
-                    <label htmlFor="departureAirline">航空資訊<br />Airline</label>
-                    <input type="text" id="departureAirline" placeholder="請輸入航空公司" {...register('departureAirline', {
-                      required: '請填寫航空資訊',
-                    })} />
-                    <span>{errors.departureAirline ? errors.departureAirline.message : ''}</span>
+                <div className="form-group">
+                  <div>請選擇離開航空資訊？<br />Share your flight details?</div>
+                  <div className="checkbox-group vertical">
+                    <div>
+                      <input type="radio" className="checkbox" id="CI772" value="中華航空  航班CI772" {...register('departureInfoStatus', { required: '請選擇離開航空資訊', })} />
+                      <label htmlFor="CI772">中華航空  航班CI772</label>
+                    </div>
+                    <div>
+                      <input type="radio" className="checkbox" id="BR256" value="長榮航空  航班BR256" {...register('departureInfoStatus')} />
+                      <label htmlFor="BR256">長榮航空  航班BR256</label>
+                    </div>
+                    <div>
+                      <input type="radio" className="checkbox" id="otherDepartureInfo" value='other' {...register('departureInfoStatus')} />
+                      <label htmlFor="otherDepartureInfo">其他 (請說明)<span className="en" style={{ display: 'block' }}>other (please specify)</span></label>
+                    </div>
                   </div>
-                  <div className="form-field">
-                    <label htmlFor="departureFlightNumber">航班編號<br />Flight Number</label>
-                    <input type="text" id="departureFlightNumber" placeholder="請輸入航空編號" {...register('departureFlightNumber', {
-                      required: '請填寫航空編號',
-                    })} />
-                    <span>{errors.departureFlightNumber ? errors.departureFlightNumber.message : ''}</span>
-                  </div>
+                  <span>{errors.departureInfoStatus ? errors.departureInfoStatus.message : ''}</span>
+                  {departureInfoStatus === 'other' && (<textarea placeholder="例如：需轉機等等..." {...register('departureInfoContent', { required: '請填寫離開航空資訊', })}></textarea>)}
+                  <span>{errors.departureInfoContent ? errors.departureInfoContent.message : ''}</span>
                 </div>
               </div>
               <div className="form-group">
@@ -433,9 +440,6 @@ const RSVP = () => {
                   </div>
                 </div>
                 <div className="tour-custom">
-                  <div className="content">無論您選擇在度假村放鬆休憩，或是探索周邊風景，我們都希望您能盡情享受留下美好的回憶</div>
-                  <div className="en content">Whether you choose to unwind at the resort or explore the surrounding area, we hope you enjoy a memorable and wonderful experience.</div>
-
                   <div className="tour a">
                     A 行程 <br />
                     <span className="en" style={{ display: 'block', color: 'white' }}>A. Resort Day</span>
@@ -458,6 +462,8 @@ const RSVP = () => {
                       <li>峇里農場莊園(Bali Farm House)</li>
                     </ul>
                   </div>
+                  <div className="content">無論您選擇在度假村放鬆休憩，或是探索周邊風景，我們都希望您能盡情享受留下美好的回憶</div>
+                  <div className="en content">Whether you choose to unwind at the resort or explore the surrounding area, we hope you enjoy a memorable and wonderful experience.</div>
                 </div>
               </div>
             </>)}
