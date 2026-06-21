@@ -44,12 +44,12 @@ const TravelGuide = () => {
       bgColor: 'cardC',
       icons: <Wallet size={30} />,
       title: '旅遊觀光稅',
-      enTitle: 'Tourism Tax',
+      enTitle: 'Tourism Levy',
       content: ['每個團體可由一位代表填寫所有人的資訊，費用為IDR 150,000', 'One representative per group may complete the application for all travelers. The fee is IDR 150,000.'],
       btn: [
         {
           text: '旅遊觀光稅網站',
-          enText: 'Tourism Tax',
+          enText: 'Tourism Levy',
           url: 'https://lovebali.baliprov.go.id/home?spm=BlogArticle.InArticleHyperlinkWord&clickId=73e8f00242'
         },
       ],

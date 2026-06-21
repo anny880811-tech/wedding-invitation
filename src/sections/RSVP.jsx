@@ -314,7 +314,7 @@ const RSVP = () => {
                     <span>{errors.arrivalAirlines ? errors.arrivalAirlines.message : ''}</span>
                   </div>
                   <div className="form-field">
-                    <label htmlFor="arrivalFlightNumber">航空編號 <br /> Flight Number</label>
+                    <label htmlFor="arrivalFlightNumber">航班編號 <br /> Flight Number</label>
                     <input type="text" id="arrivalFlightNumber" placeholder="請輸入航空編號" {...register('arrivalFlightNumber', {
                       required: '請填寫航空編號',
                     })} />
@@ -377,7 +377,7 @@ const RSVP = () => {
                     <span>{errors.departureAirline ? errors.departureAirline.message : ''}</span>
                   </div>
                   <div className="form-field">
-                    <label htmlFor="departureFlightNumber">航空編號<br />Flight Number</label>
+                    <label htmlFor="departureFlightNumber">航班編號<br />Flight Number</label>
                     <input type="text" id="departureFlightNumber" placeholder="請輸入航空編號" {...register('departureFlightNumber', {
                       required: '請填寫航空編號',
                     })} />

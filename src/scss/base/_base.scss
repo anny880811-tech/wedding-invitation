@@ -125,7 +125,7 @@ textarea {
 
 .section-title {
   color: $color-burgundy;
-  font-family: $font-en-serif;
+  font-family: $font-en-title;
   font-size: 14px;
   font-weight: 600;
   text-align: center;
@@ -242,6 +242,7 @@ textarea {
 .en {
   margin-top: 0.5rem;
   line-height: 1.5;
+  font-family: $font-en-body;
 }
 
 i {
