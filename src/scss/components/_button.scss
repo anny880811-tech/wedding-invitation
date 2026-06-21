@@ -8,9 +8,11 @@
   box-shadow: 5px 5px 20px rgba(109, 128, 138, 0.8);
   display: inline-block;
   cursor: pointer;
-  &:hover{
+
+  &:hover {
     background-color: #b5bdc6;
   }
+
   // @media (min-width: 1024px) {
   //   display: none;
   // }
@@ -38,4 +40,13 @@
   border: none;
   border-radius: 0.5rem;
   box-shadow: 3px 3px 10px rgba(109, 128, 138, 0.3);
+
+  &:hover {
+    background-color: #8e4752;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
 }

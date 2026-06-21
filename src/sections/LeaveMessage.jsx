@@ -1,40 +1,60 @@
-import { useRef, useEffect, useState } from 'react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+
+const CACHE_KEY = 'leaveMessage_wishData';
+const CACHE_TTL = 5 * 60 * 1000;
 
 const LeaveMessage = () => {
-  const [startIndex, setStartIndex] = useState(0)
-  const VISIBLE_COUNT = 2;
-  const INTERVAL = 3000;
-  const wishData = [
-    {
-      name: '安安',
-      wish: '恭喜恭喜~~，新婚愉快',
-    },
-    {
-      name: '依依',
-      wish: '測試~~，新婚愉快',
-    },
-    {
-      name: '翰翰',
-      wish: '測試2~~，新婚愉快',
-    },
-    {
-      name: '成城',
-      wish: '測試3~~，新婚愉快',
-    },
-    {
-      name: '葳葳',
-      wish: '測試~~，新婚愉快',
-    },
-  ]
-  const doubled = [...wishData, ...wishData];
-  useEffect(() => {
-    if (wishData.length <= VISIBLE_COUNT) return;
-    const timer = setInterval(() => {
-      setStartIndex(prev => (prev + 1) % wishData.length);
-    }, INTERVAL);
-    return () => clearInterval(timer);
-  }, [wishData.length]);
+  const messageUrl = 'https://sheetdb.io/api/v1/d5dwn32jkxkgb'
+  const [wishData, setWishData] = useState([]);
+  const [form, setForm] = useState({ name: '', wishes: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
+  useEffect(() => {
+    const getWish = async () => {
+      const cached = localStorage.getItem(CACHE_KEY);
+      if (cached) {
+        const { data, timestamp } = JSON.parse(cached);
+        if (Date.now() - timestamp < CACHE_TTL) {
+          setWishData(data);
+          return;
+        }
+      }
+      try {
+        const res = await axios.get(messageUrl);
+        setWishData(res.data);
+        localStorage.setItem(CACHE_KEY, JSON.stringify({
+          data: res.data,
+          timestamp: Date.now()
+        }));
+      } catch (error) {
+        console.error('讀取留言失敗', error)
+      }
+    }
+    getWish();
+  }, [])
+
+  const handleSubmit = async () => {
+    if (!form.name.trim() || !form.wishes.trim()) return;
+    setIsSubmitting(true);
+    try {
+      const res = await axios.post(messageUrl, { data: [form] })
+      const updated = [...wishData, form];
+      setWishData(updated);
+      localStorage.setItem(CACHE_KEY, JSON.stringify({
+        data: updated,
+        timestamp: Date.now()
+      }));
+      setForm({ name: '', wishes: '' })
+      console.log('成功', res.data);
+    } catch (error) {
+      console.error('送出失敗', error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
+  const doubled = [...wishData, ...wishData];
 
   return (<>
     <div className="leaveMessage-custom">
@@ -43,13 +63,30 @@ const LeaveMessage = () => {
       <div className="section-heading__divider"></div>
       <div className="wish-container">
         <div>
-          <h5>100則留言</h5>
+          <h5>{wishData.length}則留言</h5>
         </div>
         <div className="input-group">
-          <input type="text" name="" id="" className="name" placeholder="名字 Name" />
-          <textarea type="text" name="" id="" className="wishes" placeholder="留下您想說的話 Leave your message..." />
+          <input type="text"
+            name=""
+            value={form.name}
+            className="name"
+            placeholder="名字 Name"
+            onChange={e => setForm(prev => ({ ...prev, name: e.target.value }))}
+          />
+          <textarea type="text"
+            name=""
+            value={form.wishes}
+            className="wishes"
+            placeholder="留下您想說的話 Leave your message..."
+            onChange={e => setForm(prev => ({ ...prev, wishes: e.target.value }))}
+          />
         </div>
-        <button type="submit" className="wish-btn">送出 Send</button>
+        <button type="submit"
+          className="wish-btn"
+          onClick={handleSubmit}
+          disabled={isSubmitting || !form.name.trim() || !form.wishes.trim()}>
+          {isSubmitting ? '送出中 Sending...' : '送出 Send'}
+        </button>
       </div>
       <div>
         <div className="message-board-wrapper">
@@ -57,7 +94,7 @@ const LeaveMessage = () => {
             {doubled.map((item, i) => (
               <div key={i} className="message-board">
                 <p className="title">{item.name}</p>
-                <p>{item.wish}</p>
+                <p>{item.wishes}</p>
               </div>
             ))}
           </div>

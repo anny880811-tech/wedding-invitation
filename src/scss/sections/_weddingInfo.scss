@@ -9,14 +9,27 @@
   padding: 4rem 2rem;
   background-image:
     url('https://images.unsplash.com/photo-1645654731316-a350fdcf3bae?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-  background-size: calc(100% + 4px) calc(100% + 4px);
+  margin-bottom: -2px;
+  background-size: cover; 
   background-position: center center;
   background-blend-mode: multiply;
   background-color: $color-midnight;
-  outline: 3px solid black;
   padding-bottom: calc(4rem + 2px); // 補回來讓內容不移位
   position: relative;
   z-index: 1; // 確保自己蓋在下一個 section 上方
+  overflow-x: hidden;
+
+    &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, $color-midnight);
+    z-index: 2;
+    pointer-events: none;
+  }
 
   .section-title-dark,
   .section-header-dark {

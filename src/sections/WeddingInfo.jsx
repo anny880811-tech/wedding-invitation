@@ -21,6 +21,7 @@ const WeddingInfo = () => {
       mapUrl: 'https://maps.app.goo.gl/N4PrS8erK5nMvFSQ7',
     },
   ]
+
   return (<>
     <div className="weddingInfo-custom dark-section dark-bg-wrapper">
       <div className="section-title-dark gold-text">WEDDING INFORMATION</div>

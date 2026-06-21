@@ -1,5 +1,5 @@
 import { useEffect} from "react"
-
+import bgm from '../music/bgm.mp3'
 
 const AudioPlayer = ({ playing, setPlaying, audioRef }) => {
   useEffect(() => {
@@ -11,7 +11,7 @@ const AudioPlayer = ({ playing, setPlaying, audioRef }) => {
   const unlock = () => {
       if (!audioRef.current) return
       audioRef.current.muted = false
-      audioRef.current.play().catch(() => { })  // ← 加這行
+      audioRef.current.play().catch(() => { })
       setPlaying(true)
       document.removeEventListener('click', unlock)
       document.removeEventListener('scroll', unlock)
@@ -26,7 +26,7 @@ const AudioPlayer = ({ playing, setPlaying, audioRef }) => {
     }
   }, [])
   return (<>
-    <audio ref={audioRef} loop src="/src/music/bgm.mp3" preload="auto" />
+    <audio ref={audioRef} loop src={bgm} preload="auto" />
     <button
       className="audio-btn"
       onClick={() => {

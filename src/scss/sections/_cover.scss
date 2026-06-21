@@ -30,7 +30,7 @@ transition: transform 1.2s ease-in;
       // 文字區塊放上方
       .cover-text__names {
         position: absolute;
-        top: 15%;
+        top: 12%;
         left: 50%;
         transform: translateX(-50%);
         white-space: nowrap;
@@ -115,8 +115,11 @@ transition: transform 1.2s ease-in;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 47% center;
+    object-position: 47%;
     z-index: 0;
+      @media (min-width: 1024px) {
+      transform: translateX(2%);
+    }
   }
 
   // ✅ 新增 gradient 疊加層（補回原本的 linear-gradient 效果）

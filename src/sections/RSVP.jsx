@@ -76,7 +76,6 @@ const RSVP = () => {
     defaultValues: {
       joinStatus: "",
       statistics: null,
-      email: null,
       arrivalDate: null,
       arrivalTime: null,
       departureDate: null,
@@ -84,6 +83,7 @@ const RSVP = () => {
       travelPlanDate: null,
       allergyStatus: "",
       needStatus: "",
+      journeyStatus: "",
     }
   })
   const onSubmit = async (data) => {
@@ -143,7 +143,14 @@ const RSVP = () => {
             </div>
             {joinStatus === 'yes' && (<>
               <div className="form-group">
-                <label htmlFor="statistics">1. 參加人數<br /> Guest Count</label>
+                <label htmlFor="name">1. 姓名 name </label>
+                <input type="text" id="name" placeholder="請填寫您的姓名" {...register('name', {
+                  required: '請填寫您的姓名'
+                })} />
+                <span>{errors.name ? errors.name.message : ''}</span>
+              </div>
+              <div className="form-group">
+                <label htmlFor="statistics">2. 參加人數<br /> Guest Count</label>
                 <Controller
                   control={control}
                   name="statistics"
@@ -164,14 +171,14 @@ const RSVP = () => {
                 )}
               </div>
               <div className="form-group">
-                <label htmlFor="email">2. Email <br /> (詳細活動於婚禮前1個月email通知) <br className="en" />Detailed event information will be sent via email one month before the wedding.</label>
+                <label htmlFor="email">3. Email <br /> (詳細活動於婚禮前1個月email通知) <br className="en" />Detailed event information will be sent via email one month before the wedding.</label>
                 <input type="text" id="email" placeholder="請填寫您的Email" {...register('email', {
                   required: '請填寫您的Email'
                 })} />
                 <span>{errors.email ? errors.email.message : ''}</span>
               </div>
               <div className="form-group">
-                <div>3. 抵達峇里島的時間＆航班資訊 <br />Arrival Information</div>
+                <div>4. 抵達峇里島的時間＆航班資訊 <br />Arrival Information</div>
                 <div className="flight-group">
                   <div className="form-field">
                     <label htmlFor="arrivalDate">抵達日期 <br />Arrival Date</label>
@@ -232,7 +239,7 @@ const RSVP = () => {
                 </div>
               </div>
               <div className="form-group">
-                <div>4. 離開峇里島的時間＆航班資訊<br />Departure Information</div>
+                <div>5. 離開峇里島的時間＆航班資訊<br />Departure Information</div>
                 <div className="flight-group">
                   <div className="form-field">
                     <label htmlFor="departureDate">離開日期<br />Departure Date</label>
@@ -295,7 +302,7 @@ const RSVP = () => {
                 </div>
               </div>
               <div className="form-group">
-                <div>5. 是否對任何食物過敏？<br />Do you have any food allergies or dietary restrictions?</div>
+                <div>6. 是否對任何食物過敏？<br />Do you have any food allergies or dietary restrictions?</div>
                 <div className="checkbox-group">
                   <div>
                     <input type="radio" className="checkbox" id="noAllergies" value="none" {...register('allergyStatus', { required: '請選擇是否有食物過敏', })} />
@@ -312,7 +319,7 @@ const RSVP = () => {
                 <span>{errors.allergyContent ? errors.allergyContent.message : ''}</span>
               </div>
               <div className="form-group">
-                <div>6. 是否有其他特殊需求？<br />Do you have any special requests or requirements?</div>
+                <div>7. 是否有其他特殊需求？<br />Do you have any special requests or requirements?</div>
                 <div className="checkbox-group">
                   <div>
                     <input type="radio" className="checkbox" id="noNeed" value='none' {...register('needStatus', { required: '請選擇是否有特殊需求', })} />
@@ -327,24 +334,8 @@ const RSVP = () => {
                 {needStatus === 'yes' && (<textarea placeholder="例如：兒童座椅、輪椅協助等" {...register('needContent', { required: '請填寫您的需求', })}></textarea>)}
                 <span>{errors.needContent ? errors.needContent.message : ''}</span>
               </div>
-              {/* <div className="form-group">
-                <div>7. 是否需要我們協助規畫婚禮以外的峇里島行程？</div>
-                <div className="checkbox-group">
-                  <div>
-                    <input type="radio" className="checkbox" id="noJourney" value='none' {...register('regularTravelStatus', { required: '請選擇是否需要協助', })} />
-                    <label htmlFor="noJourney">不需要</label>
-                  </div>
-                  <div>
-                    <input type="radio" className="checkbox" id="journey" value='yes'{...register('regularTravelStatus')} />
-                    <label htmlFor="journey">需要(請附上日期)</label>
-                  </div>
-                </div>
-                <span>{errors.regularTravelStatus ? errors.regularTravelStatus.message : ''}</span>
-                {regularTravelStatus === 'yes' && (<textarea placeholder="請附上日期及需要的協助" {...register('regularTravelContent', { required: '請填寫日期及需要的協助', })}></textarea>)}
-                <span>{errors.regularTravelContent ? errors.regularTravelContent.message : ''}</span>
-              </div> */}
               <div className="form-group">
-                <div>7. 1/24在婚禮開始之前，我們誠摯邀請您依照自己的步調，感受貝都古高地的自然之美(請擇一)
+                <div>8. 1/24在婚禮開始之前，我們誠摯邀請您依照自己的步調，感受貝都古高地的自然之美(請擇一)
                 </div>
                 <div className="en">On January 24, prior to the wedding ceremony, we warmly invite you to explore the natural beauty of the Bedugul highlands at your own pace. Please choose one of the following options:</div>
                 <div className="checkbox-group">
@@ -386,7 +377,7 @@ const RSVP = () => {
                 </div>
               </div>
             </>)}
-            <button type="submit" className="form-btn" disabled={isSubmitting}>{isSubmitting ? '表單送出中... Submitting...' : '送出回覆 Submit Response'}</button>
+            <button type="submit" className="form-btn" disabled={isSubmitting}>{isSubmitting ? '表單送出中 Submitting...' : '送出回覆 Submit Response'}</button>
           </div>
         </form>
       </div>
