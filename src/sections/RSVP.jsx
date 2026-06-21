@@ -154,27 +154,27 @@ const RSVP = () => {
             ) : (
               <table className="modal-table">
                 <tbody>
-                  <tr><td>姓名</td><td>{pendingData.name}</td></tr>
-                  <tr><td>參加人數</td><td>{pendingData.statistics} 人</td></tr>
-                  <tr><td>Email</td><td>{pendingData.email}</td></tr>
+                  <tr><td>姓名 name</td><td>{pendingData.name}</td></tr>  
+                  <tr><td>參加人數 Guest Count</td><td>{pendingData.statistics} 人</td></tr>
+                  <tr><td>信箱 Email</td><td>{pendingData.email}</td></tr>
                   <tr>
-                    <td>抵達</td>
+                    <td>抵達 Arrival</td>
                     <td>{pendingData.arrivalDate} {pendingData.arrivalTime}<br />{pendingData.arrivalAirlines} {pendingData.arrivalFlightNumber}</td>
                   </tr>
                   <tr>
-                    <td>離開</td>
+                    <td>離開 Departure</td>
                     <td>{pendingData.departureDate} {pendingData.departureTime}<br />{pendingData.departureAirline} {pendingData.departureFlightNumber}</td>
                   </tr>
                   <tr>
-                    <td>食物過敏</td>
+                    <td>食物過敏 Allergy</td>
                     <td>{pendingData.allergyStatus === "none" ? "無" : pendingData.allergyContent || "有"}</td>
                   </tr>
                   <tr>
-                    <td>特殊需求</td>
+                    <td>特殊需求 Need</td>
                     <td>{pendingData.needStatus === "none" ? "無" : pendingData.needContent || "有"}</td>
                   </tr>
                   {pendingData.journeyStatus && (
-                    <tr><td>行程選擇</td><td>{pendingData.journeyStatus} 行程</td></tr>
+                    <tr><td>行程選擇 Journey</td><td>{pendingData.journeyStatus} 行程</td></tr>
                   )}
                 </tbody>
               </table>
@@ -262,7 +262,7 @@ const RSVP = () => {
                 <span>{errors.email ? errors.email.message : ''}</span>
               </div>
               <div className="form-group">
-                <div>4. 抵達峇里島的時間＆航班資訊 <br />Arrival Information</div>
+                <div>4. 抵達峇里島的時間＆航班資訊 <br />Arrival Information</div> 
                 <div className="flight-group">
                   <div className="form-field">
                     <label htmlFor="arrivalDate">抵達日期 <br />Arrival Date</label>
