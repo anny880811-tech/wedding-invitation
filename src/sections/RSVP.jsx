@@ -3,10 +3,15 @@ import { format } from "date-fns"
 import DatePicker from "react-datepicker"
 import Select from "react-select"
 import axios from "axios"
+import { useState } from "react"
 
 
 const RSVP = () => {
   const sheetdbUrl = `https://sheetdb.io/api/v1/9tmu6xegt8tur`
+  const [confirmModal, setConfirmModal] = useState(false)
+  const [pendingData, setPendingData] = useState(null)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const options = Array.from({ length: 10 }, (_, i) => ({
     value: i + 1,
     label: `${i + 1} 人`,
@@ -50,6 +55,7 @@ const RSVP = () => {
       color: "#999",
       fontSize: "14px",  // 縮小字級
       margin: 0,
+      lineHeight: "32px",
     }),
     indicatorsContainer: (base) => ({
       ...base,
@@ -58,9 +64,10 @@ const RSVP = () => {
     valueContainer: (base) => ({
       ...base,
       height: "32px",
-      padding: "0 8px",
+      padding: "0 8px 0 12px",
       display: "flex",
       alignItems: "center",
+      flexWrap: "nowrap",
     }),
   };
   const formatDate = (date) => date ? format(date, "MM/dd/yyyy") : ""
@@ -70,7 +77,7 @@ const RSVP = () => {
     handleSubmit,
     control,
     watch,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm({
     shouldUnregister: true,
     defaultValues: {
@@ -94,20 +101,97 @@ const RSVP = () => {
       departureDate: formatDate(data.departureDate),
       departureTime: formatTime(data.departureTime),
     }
-    console.log(formattedData)
-    try {
-      console.log(JSON.stringify({ data: [formattedData] }, null, 2))
-      const res = await axios.post(sheetdbUrl, { data: [formattedData] })
-      console.log('成功', res.data);
+    setPendingData(formattedData)
+    setConfirmModal(true)
+  }
 
+  // modal 確認 → 真正送出
+  const handleConfirm = async () => {
+    setIsSubmitting(true)
+    try {
+      await axios.post(sheetdbUrl, { data: [pendingData] })
+      setConfirmModal(false)
+      setIsSubmitted(true)
+      console.log(JSON.stringify({ data: [pendingData] }, null, 2))
     } catch (error) {
       console.error("送出錯誤:", error.response?.data || error.message)
+    } finally {
+      setIsSubmitting(false)
     }
   }
+
+
   const allergyStatus = watch('allergyStatus')
   const needStatus = watch('needStatus')
   const joinStatus = watch('joinStatus')
+
+  if (isSubmitted) {
+    return (
+      <div className="RSVP-custom">
+        <div className="section-title">GUEST REGISTRATION</div>
+        <h3 className="section-header">賓客登記</h3>
+        <div className="section-heading__divider"></div>
+        <div className="submitted-message">
+          <h4>感謝您的回覆</h4>
+          <p className="en">Thank you for your response</p>
+          <p>我們已收到您的出席資訊</p>
+          <p>期待與您在峇里島相見 </p>
+          <p className="en">We have received your information and look forward to celebrating with you in Bali.</p>
+        </div>
+      </div>
+    )
+  }
+
   return (<>
+    {confirmModal && pendingData && (
+      <div className="modal-overlay">
+        <div className="modal-box">
+          <h4 className="modal-title">請確認您的填寫資料</h4>
+          <p className="modal-subtitle en">Please review your information before submitting.</p>
+          <div className="modal-content">
+            {pendingData.joinStatus === "no" ? (
+              <p>出席狀態：無法參加</p>
+            ) : (
+              <table className="modal-table">
+                <tbody>
+                  <tr><td>姓名</td><td>{pendingData.name}</td></tr>
+                  <tr><td>參加人數</td><td>{pendingData.statistics} 人</td></tr>
+                  <tr><td>Email</td><td>{pendingData.email}</td></tr>
+                  <tr>
+                    <td>抵達</td>
+                    <td>{pendingData.arrivalDate} {pendingData.arrivalTime}<br />{pendingData.arrivalAirlines} {pendingData.arrivalFlightNumber}</td>
+                  </tr>
+                  <tr>
+                    <td>離開</td>
+                    <td>{pendingData.departureDate} {pendingData.departureTime}<br />{pendingData.departureAirline} {pendingData.departureFlightNumber}</td>
+                  </tr>
+                  <tr>
+                    <td>食物過敏</td>
+                    <td>{pendingData.allergyStatus === "none" ? "無" : pendingData.allergyContent || "有"}</td>
+                  </tr>
+                  <tr>
+                    <td>特殊需求</td>
+                    <td>{pendingData.needStatus === "none" ? "無" : pendingData.needContent || "有"}</td>
+                  </tr>
+                  {pendingData.journeyStatus && (
+                    <tr><td>行程選擇</td><td>{pendingData.journeyStatus} 行程</td></tr>
+                  )}
+                </tbody>
+              </table>
+            )}
+          </div>
+          <div className="modal-actions">
+            <button className="modal-btn cancel" onClick={() => setConfirmModal(false)} disabled={isSubmitting}>
+              返回修改<span className="en"> Edit</span>
+            </button>
+            <button className="modal-btn confirm" onClick={handleConfirm} disabled={isSubmitting}>
+              {isSubmitting ? "送出中..." : "確認送出"}
+              {!isSubmitting && <span className="en"> Confirm</span>}
+            </button>
+          </div>
+        </div>
+      </div>
+    )}
     <div className="RSVP-custom">
       <div className="section-title">GUEST REGISTRATION</div>
       <h3 className="section-header">賓客登記</h3>

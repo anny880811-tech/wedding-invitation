@@ -1,3 +1,121 @@
+// ── 確認 Modal ──────────────────────────────────────
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 21, 40, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-box {
+  background: #fdf6f0;
+  border-radius: 16px;
+  padding: 32px 28px 24px;
+  max-width: 480px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(11, 21, 40, 0.3);
+}
+
+.modal-title {
+  font-size: 18px;
+  color: $color-midnight;
+  margin-bottom: 4px;
+  text-align: center;
+}
+
+.modal-subtitle {
+  font-size: 13px;
+  color: #888;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.modal-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+
+  td {
+    padding: 8px 10px;
+    vertical-align: top;
+    border-bottom: 1px solid rgba(128, 0, 32, 0.08);
+    color: $color-midnight;
+
+    &:first-child {
+      white-space: nowrap;
+      color: $color-burgundy;
+      font-weight: 500;
+      width: 80px;
+    }
+  }
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+
+  .modal-btn {
+    flex: 1;
+    padding: 10px 0;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    transition: opacity 0.2s;
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    &.cancel {
+      background: transparent;
+      border: 1.5px solid $color-burgundy;
+      color: $color-burgundy;
+    }
+
+    &.confirm {
+      background: $color-burgundy;
+      color: #fff;
+    }
+
+    .en {
+      font-size: 12px;
+      opacity: 0.8;
+    }
+  }
+}
+
+// ── 送出成功頁 ──────────────────────────────────────
+.submitted-message {
+  text-align: center;
+  padding: 30px 24px;
+  color: $color-midnight;
+
+  h4 {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #555;
+
+    &.en {
+      font-size: 13px;
+      color: #888;
+    }
+  }
+}
+
 .RSVP-custom {
   display: flex;
   flex-direction: column;
@@ -36,6 +154,13 @@
     .form-group {
       margin-top: 1.2rem;
       text-align: start;
+
+      input {
+        height: 1.8rem;
+        font-size: 14px;
+        box-sizing: border-box;
+        padding: 0 0.5rem;
+      }
 
       .en {
         margin-top: 0.2rem;
@@ -110,6 +235,7 @@
           label {
             margin: 0;
           }
+
           textarea {
             font-size: 14px;
           }
