@@ -304,6 +304,8 @@ const RSVP = () => {
                     )}
                   </div>
                 </div>
+
+                
                 <div className="form-group">
                   <div>請選擇抵達航空資訊？<br />Share your flight details?</div>
                   <div className="checkbox-group vertical">
