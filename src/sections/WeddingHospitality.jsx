@@ -1,5 +1,5 @@
 import { BedDouble} from "lucide-react"
-import flowers07 from "../assets/flowers07.png"
+import flowers07 from "../assets/flowers07.webp"
 const WeddingHospitality = () => {
   const hospitalityData = [
     {

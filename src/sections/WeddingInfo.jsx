@@ -1,4 +1,4 @@
-import flowers07 from "../assets/flowers07.png"
+import flowers07 from "../assets/flowers07.webp"
 import { Accordion } from 'react-bootstrap';
 const WeddingInfo = () => {
   const weddingInfoData = [

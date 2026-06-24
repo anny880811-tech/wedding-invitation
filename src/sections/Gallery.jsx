@@ -13,26 +13,26 @@ const Gallery = () => {
       <div className="photo-group">
         <div className="photo-mixed-group">
           <div className="photo-portrait-container">
-            <img src={TRE_2294} className="photo-s" alt="婚紗照" loading="lazy" />
+            <img src={TRE_2294} className="photo-s" alt="婚紗照" loading="preload" />
           </div>
           <div className="photo-landscape-container">
-            <img src={TRE_2353} className="photo-s" alt="婚紗照" loading="lazy" />
+            <img src={TRE_2353} className="photo-s" alt="婚紗照" loading="preload" />
           </div>
         </div>
         <div className="photo-mixed-group">
           <div className="photo-landscape-container">
-            <img src={TRE_2347} className="photo-s" alt="婚紗照" loading="lazy" />
+            <img src={TRE_2347} className="photo-s" alt="婚紗照" loading="preload" />
           </div>
           <div className="photo-portrait-container">
-            <img src={TRE_2335 } className="photo-s" alt="婚紗照" loading="lazy" />
+            <img src={TRE_2335 } className="photo-s" alt="婚紗照" loading="preload" />
           </div>
         </div>
         <div className="photo-mixed-group">
           <div className="photo-portrait-container">
-            <img src={TRE_2521} className="photo-s" alt="婚紗照" loading="lazy" />
+            <img src={TRE_2521} className="photo-s" alt="婚紗照" loading="preload" />
           </div>
           <div className="photo-landscape-container">
-            <img src={TRE_2444} className="photo-s" alt="婚紗照" loading="lazy" />
+            <img src={TRE_2444} className="photo-s" alt="婚紗照" loading="preload" />
           </div>
         </div>
         {/* <div className="photo-l-container">
