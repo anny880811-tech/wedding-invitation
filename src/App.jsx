@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { ThreeDots } from "react-loader-spinner";
 import Cover from "./sections/Cover";
 import Hero from "./sections/Hero";
 import WeddingInfo from "./sections/WeddingInfo";
@@ -16,6 +17,7 @@ import weddingPhoto from "./assets/TRE_2314.webp";
 function App() {
   const [isOpen, setIsOpen] = useState(false)
   const [imgLoaded, setImgLoaded] = useState(false)
+  const [loadingVisible, setLoadingVisible] = useState(true)
   const [playing, setPlaying] = useState(false)
   const audioRef = useRef(null)
 
@@ -45,6 +47,13 @@ function App() {
     return () => document.removeEventListener('visibilitychange', handleVisibility)
   }, [playing])
 
+  const handleImgLoaded = () => {
+    setTimeout(() => {
+      setImgLoaded(true) // 觸發 fade out
+      setTimeout(() => setLoadingVisible(false), 800) // 動畫結束後才 unmount
+    }, 1200)
+  }
+
   return (
     <>
       <div style={{
@@ -56,13 +65,21 @@ function App() {
       }}>
         <Cover
           onOpen={handleOpen}
-          onImgLoaded={() => setImgLoaded(true)}
+          onImgLoaded={handleImgLoaded}
           onPlay={handlePlay}
         />
       </div>
-      {!imgLoaded && (
-        <div className="cover-loading">
-          <p>載入中... 動畫待補</p>
+      {loadingVisible && (
+        <div className={`cover-loading ${imgLoaded ? 'cover-loading--hidden' : ''}`}>
+          <p>Loading</p>
+          <ThreeDots
+            visible={true}
+            height="50"
+            width="50"
+            color="#7F93A8"
+            radius="9"
+            ariaLabel="three-dots-loading"
+          />
         </div>
       )}
       <div className="site-layout">

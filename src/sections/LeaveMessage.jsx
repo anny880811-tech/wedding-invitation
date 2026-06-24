@@ -65,7 +65,7 @@ const LeaveMessage = () => {
         <div>
           <h5>{wishData.length}則留言</h5>
         </div>
-        <div className="input-group">
+        <div className="wish-input-group">
           <input type="text"
             name=""
             value={form.name}
