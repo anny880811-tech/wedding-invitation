@@ -5,6 +5,7 @@ import './scss/all.scss'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import "react-datepicker/dist/react-datepicker.css"
+import 'yet-another-react-lightbox/styles.css'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

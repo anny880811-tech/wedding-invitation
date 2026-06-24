@@ -1,7 +1,7 @@
 import { useState } from "react"
 import coverbg from '../assets/TRE_2314.webp'
 
-const Cover = ({ onOpen, onImgLoaded, onPlay }) => {
+const Cover = ({ onOpen, onPlay, onReady }) => {
   const [isLeaving, setIsLeaving] = useState(false)
   const [bgLoaded, setBgLoaded] = useState(false)
   const handleOpen = () => {
@@ -13,11 +13,17 @@ const Cover = ({ onOpen, onImgLoaded, onPlay }) => {
   }
   const handleLoad = () => {
     setBgLoaded(true)
-    onImgLoaded()
+    onReady()
   }
   return (<>
     <div className={`invitation-container${isLeaving ? ' slide-up' : ''}`}>
-      <img className="cover-bg" src={coverbg} alt="" onLoad={handleLoad} onError={onImgLoaded} />
+      <img
+        className={`cover-bg${bgLoaded ? ' is-loaded' : ''}`}
+        src={coverbg}
+        alt="cover婚紗照"
+        onLoad={handleLoad}
+        onError={() => { setBgLoaded(true); onReady() }}
+        fetchPriority="high" />
       {bgLoaded && (<>
         {/* 桌機版 */}
         <div className="cover-text--desktop">

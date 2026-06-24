@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from "react";
-import { ThreeDots } from "react-loader-spinner";
 import Cover from "./sections/Cover";
 import Hero from "./sections/Hero";
 import WeddingInfo from "./sections/WeddingInfo";
@@ -16,9 +15,8 @@ import weddingPhoto from "./assets/TRE_2314.webp";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false)
-  const [imgLoaded, setImgLoaded] = useState(false)
-  const [loadingVisible, setLoadingVisible] = useState(true)
   const [playing, setPlaying] = useState(false)
+  const [coverReady, setCoverReady] = useState(false)
   const audioRef = useRef(null)
 
   const handleOpen = () => {
@@ -47,12 +45,6 @@ function App() {
     return () => document.removeEventListener('visibilitychange', handleVisibility)
   }, [playing])
 
-  const handleImgLoaded = () => {
-    setTimeout(() => {
-      setImgLoaded(true) // 觸發 fade out
-      setTimeout(() => setLoadingVisible(false), 800) // 動畫結束後才 unmount
-    }, 1200)
-  }
 
   return (
     <>
@@ -61,27 +53,15 @@ function App() {
         inset: 0,
         zIndex: 100,
         pointerEvents: isOpen ? 'none' : 'auto',
-        visibility: isOpen ? 'hidden' : 'visible'
+        visibility: isOpen ? 'hidden' : 'visible',
+        // backgroundColor: '#F4EFEA'
       }}>
         <Cover
           onOpen={handleOpen}
-          onImgLoaded={handleImgLoaded}
           onPlay={handlePlay}
+          onReady={() => setCoverReady(true)}
         />
       </div>
-      {loadingVisible && (
-        <div className={`cover-loading ${imgLoaded ? 'cover-loading--hidden' : ''}`}>
-          <p>Loading</p>
-          <ThreeDots
-            visible={true}
-            height="50"
-            width="50"
-            color="#7F93A8"
-            radius="9"
-            ariaLabel="three-dots-loading"
-          />
-        </div>
-      )}
       <div className="site-layout">
 
         {/* 左側固定圖片（手機隱藏） */}
@@ -90,15 +70,17 @@ function App() {
         </div>
 
         <div className="site-right">
-          <Hero />
-          <WeddingInfo />
-          <WeddingHospitality />
-          <Gallery />
-          <RSVP />
-          <TravelGuide />
-          <DressGuide />
-          <LeaveMessage />
-          <Footer />
+          {coverReady && (<>
+            <Hero />
+            <WeddingInfo />
+            <WeddingHospitality />
+            <Gallery />
+            <RSVP />
+            <TravelGuide />
+            <DressGuide />
+            <LeaveMessage />
+            <Footer />
+          </>)}
         </div>
       </div>
       <AudioPlayer playing={playing} setPlaying={setPlaying} audioRef={audioRef} />

@@ -36,33 +36,3 @@
     width: 33%;
   }
 }
-
-.cover-loading {
-  position: fixed;
-  inset: 0;
-  z-index: 101; // 在封面下面，但蓋住內容
-  background-color: $color-ivory;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-   flex-direction: row;  // 加這行
-  gap: 0.5rem;          // 字和點的間距
-  align-items: center;  // 垂直置中對齊
-  transition: opacity 0.6s ease;
-  opacity: 1;
-
-  &--hidden {
-    opacity: 0;
-  }
-  svg {
-    display: block;
-    margin-bottom: 10px; // 微調，試試看幾px合適
-  }
-
-  p {
-    color: $color-mist-blue;
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-  }
-}
