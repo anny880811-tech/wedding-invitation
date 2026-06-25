@@ -27,7 +27,7 @@
       // 文字區塊放上方
       .cover-text__names {
         position: absolute;
-        top: 12%;
+        top: 10%;
         left: 50%;
         transform: translateX(-50%);
         white-space: nowrap;
@@ -58,6 +58,14 @@
         left: 50%;
         transform: translateX(-50%);
         z-index: 2;
+
+        h2,
+        h4 {
+          color: $color-ivory;
+        }
+        h4{
+          letter-spacing: 0.15em;
+        }
       }
     }
 
@@ -128,7 +136,13 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(rgba(255, 200, 150, 0.06), rgba(255, 200, 150, 0.06));
+    // background: linear-gradient(rgba(255, 200, 150, 0.06), rgba(255, 200, 150, 0.06));
+    background: linear-gradient(
+      to bottom, 
+      rgba(220, 181, 126, 0) 0%, 
+      rgba(220, 181, 126, 0) 40%, 
+      rgba(0, 0, 0, 0.45) 100%
+    );
     z-index: 1;
     pointer-events: none;
   }
@@ -174,13 +188,15 @@
       color: $color-ivory;
       margin-bottom: 0.5rem;
       font-weight: 600;
-      line-height: 0.5;
+      line-height: 0.8;
     }
 
     h4 {
       color: $color-ivory;
       margin-bottom: 1rem;
-      font-weight: 700;
+      font-weight: 600;
+      font-size: 1.2rem;
+      letter-spacing: 0.15em;
     }
   }
 

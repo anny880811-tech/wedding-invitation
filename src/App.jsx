@@ -11,14 +11,17 @@ import Footer from "./sections/Footer";
 import LeaveMessage from "./sections/LeaveMessage";
 import AudioPlayer from "./components/AudioPlayer";
 import weddingPhoto from "./assets/TRE_2314.webp";
-
+import { useParams } from "react-router";
+import guestList from './guestList';
 
 function App() {
   const [isOpen, setIsOpen] = useState(false)
   const [playing, setPlaying] = useState(false)
   const [coverReady, setCoverReady] = useState(false)
   const audioRef = useRef(null)
-
+  const { guestId } = useParams()
+  const guestName = guestId ? guestList[guestId] : null
+  const displayName = guestName ?? '家人朋友'
   const handleOpen = () => {
     setIsOpen(true)
     setPlaying(true)
@@ -54,12 +57,12 @@ function App() {
         zIndex: 100,
         pointerEvents: isOpen ? 'none' : 'auto',
         visibility: isOpen ? 'hidden' : 'visible',
-        // backgroundColor: '#F4EFEA'
       }}>
         <Cover
           onOpen={handleOpen}
           onPlay={handlePlay}
           onReady={() => setCoverReady(true)}
+          gusetName={displayName}
         />
       </div>
       <div className="site-layout">

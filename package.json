@@ -25,7 +25,7 @@
     "react-dom": "^19.2.6",
     "react-hook-form": "^7.78.0",
     "react-loader-spinner": "^8.0.2",
-    "react-router": "^7.17.0",
+    "react-router": "^7.18.0",
     "react-select": "^5.10.2",
     "yet-another-react-lightbox": "^3.32.0"
   },

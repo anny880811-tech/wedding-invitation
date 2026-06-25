@@ -25,11 +25,9 @@
       width: 200px;
       height: 200px;
       background-image: url('/src/assets/flowers02.webp');
-      /* 放入 001.jpg 右上角延伸或圓弧那組花 */
       background-size: contain;
       background-repeat: no-repeat;
       z-index: 1;
-      /* 若想藏在框線後可改 -1，露在框線上改 1 */
       pointer-events: none;
     }
 
@@ -49,10 +47,6 @@
 
     .wish-input-group {
       padding: 1rem;
-  
-
-      .name {}
-
       .wishes {
         margin-top: 1rem;
       }
@@ -62,7 +56,6 @@
 
     textarea,
     input {
-      // background-color: rgba($color-mist-blue, 0.2);
       background-color: #ffffff;
       padding-left: 0.5rem;
       box-sizing: border-box;

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import coverbg from '../assets/TRE_2314.webp'
 
-const Cover = ({ onOpen, onPlay, onReady }) => {
+const Cover = ({ onOpen, onPlay, onReady, gusetName }) => {
   const [isLeaving, setIsLeaving] = useState(false)
   const [bgLoaded, setBgLoaded] = useState(false)
   const handleOpen = () => {
@@ -34,6 +34,8 @@ const Cover = ({ onOpen, onPlay, onReady }) => {
             <p>2027.01.24</p>
           </div>
           <div className="cover-btn-desktop">
+            <h2>{`親愛的${gusetName}`}</h2>
+            <h4>誠摯邀請您一同參與我們的婚禮</h4>
             <button type="button" className="cover-btn" onClick={handleOpen}>
               Open Invitation
             </button>
@@ -49,7 +51,7 @@ const Cover = ({ onOpen, onPlay, onReady }) => {
           <p>2027.01.24</p>
         </div>
         <div className="cover-btn-wrapper">
-          <h2>親愛的家人們</h2>
+          <h2>{`親愛的${gusetName}`}</h2>
           <h4>誠摯邀請您一同參與我們的婚禮</h4>
           <button type="button" className="cover-btn" onClick={handleOpen}>Open Invitation</button>
         </div>
