@@ -9,6 +9,10 @@
       "dest": "/assets/$1"
     },
     {
+      "src": "/(.*\\.(jpg|jpeg|png|gif|svg|webp|ico))",
+      "dest": "/$1"
+    },
+    {
       "handle": "filesystem"
     },
     {
