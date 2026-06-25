@@ -102,7 +102,8 @@
   .message-board-track {
     display: flex;
     flex-direction: column;
-    animation: scrollUp 40s linear infinite;
+    // animation: scrollUp 40s linear infinite;
+    animation: scrollUp var(--scroll-duration, 30s) linear infinite;
 
     &:hover {
       animation-play-state: paused;

@@ -1,11 +1,12 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const LeaveMessage = () => {
   const messageUrl = '/api/messages'
   const [wishData, setWishData] = useState([]);
   const [form, setForm] = useState({ name: '', wishes: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const trackRef = useRef(null);
 
   useEffect(() => {
     const getWish = async () => {
@@ -18,6 +19,19 @@ const LeaveMessage = () => {
     }
     getWish();
   }, [])
+
+  // 當 wishData 改變時，動態計算滾動時間
+  useEffect(() => {
+    if (trackRef.current && wishData.length > 0) {
+      const speed = 30; // 的定速：每秒跑 50px
+      const totalHeight = trackRef.current.scrollHeight; // 整條軌道的總像素高度
+      const scrollDistance = totalHeight / 2; // 動畫跑 -50%，實際距離是總高的一半
+      const duration = scrollDistance / speed; // 時間 = 距離 / 速度
+
+      // 動態把秒數寫入 CSS 變數中
+      trackRef.current.style.setProperty('--scroll-duration', `${duration}s`);
+    }
+  }, [wishData]); // 當 wishData 變動時（剛載入完、或新增留言），就會重新計算
 
   const handleSubmit = async () => {
     if (!form.name.trim() || !form.wishes.trim()) return;
@@ -70,7 +84,7 @@ const LeaveMessage = () => {
       </div>
       <div>
         <div className="message-board-wrapper">
-          <div className="message-board-track">
+          <div className="message-board-track" ref={trackRef}>
             {doubled.map((item, i) => (
               <div key={i} className="message-board">
                 <p className="title">{item[0]}</p>

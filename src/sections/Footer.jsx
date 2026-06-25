@@ -65,6 +65,10 @@ const Footer = () => {
         <img src={img11} alt="頁尾婚紗照" />
       </div>
     </div>
+    <footer className="wedding-footer-bar">
+      <div className="footer-email">Designed & Developed</div>
+      <div className="footer-email">by 楊蕙安 (huian.y.yy@gmail.com)</div>
+    </footer>
   </>)
 }
 
