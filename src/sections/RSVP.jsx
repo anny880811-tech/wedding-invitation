@@ -7,7 +7,7 @@ import { useRef, useState } from "react"
 
 
 const RSVP = () => {
-  const sheetdbUrl = `https://sheetdb.io/api/v1/9tmu6xegt8tur`
+  const sheetdbUrl = '/api/rsvp'
   const [confirmModal, setConfirmModal] = useState(false)
   const [pendingData, setPendingData] = useState(null)
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -109,7 +109,7 @@ const RSVP = () => {
   const handleConfirm = async () => {
     setIsSubmitting(true)
     try {
-      await axios.post(sheetdbUrl, { data: [pendingData] })
+      await axios.post(sheetdbUrl, pendingData)
       setConfirmModal(false)
       setIsSubmitted(true)
       setTimeout(() => {

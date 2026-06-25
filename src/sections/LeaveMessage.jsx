@@ -5,7 +5,7 @@ const CACHE_KEY = 'leaveMessage_wishData';
 const CACHE_TTL = 5 * 60 * 1000;
 
 const LeaveMessage = () => {
-  const messageUrl = 'https://sheetdb.io/api/v1/d5dwn32jkxkgb'
+  const messageUrl = '/api/messages'
   const [wishData, setWishData] = useState([]);
   const [form, setForm] = useState({ name: '', wishes: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -38,7 +38,7 @@ const LeaveMessage = () => {
     if (!form.name.trim() || !form.wishes.trim()) return;
     setIsSubmitting(true);
     try {
-      const res = await axios.post(messageUrl, { data: [form] })
+      const res = await axios.post(messageUrl, form)
       const updated = [...wishData, form];
       setWishData(updated);
       localStorage.setItem(CACHE_KEY, JSON.stringify({
@@ -93,8 +93,8 @@ const LeaveMessage = () => {
           <div className="message-board-track">
             {doubled.map((item, i) => (
               <div key={i} className="message-board">
-                <p className="title">{item.name}</p>
-                <p>{item.wishes}</p>
+                <p className="title">{item[0]}</p>
+                <p>{item[1]}</p>
               </div>
             ))}
           </div>
