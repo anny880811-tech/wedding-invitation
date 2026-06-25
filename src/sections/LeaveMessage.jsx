@@ -1,9 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-const CACHE_KEY = 'leaveMessage_wishData';
-const CACHE_TTL = 5 * 60 * 1000;
-
 const LeaveMessage = () => {
   const messageUrl = '/api/messages'
   const [wishData, setWishData] = useState([]);
@@ -12,21 +9,9 @@ const LeaveMessage = () => {
 
   useEffect(() => {
     const getWish = async () => {
-      const cached = localStorage.getItem(CACHE_KEY);
-      if (cached) {
-        const { data, timestamp } = JSON.parse(cached);
-        if (Date.now() - timestamp < CACHE_TTL) {
-          setWishData(data);
-          return;
-        }
-      }
       try {
         const res = await axios.get(messageUrl);
         setWishData(res.data);
-        localStorage.setItem(CACHE_KEY, JSON.stringify({
-          data: res.data,
-          timestamp: Date.now()
-        }));
       } catch (error) {
         console.error('讀取留言失敗', error)
       }
@@ -39,12 +24,7 @@ const LeaveMessage = () => {
     setIsSubmitting(true);
     try {
       const res = await axios.post(messageUrl, form)
-      const updated = [...wishData, form];
-      setWishData(updated);
-      localStorage.setItem(CACHE_KEY, JSON.stringify({
-        data: updated,
-        timestamp: Date.now()
-      }));
+      setWishData(prev => [...prev, [form.name, form.wishes]]);
       setForm({ name: '', wishes: '' })
       console.log('成功', res.data);
     } catch (error) {

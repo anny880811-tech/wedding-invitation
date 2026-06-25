@@ -8,6 +8,8 @@ const auth = new google.auth.GoogleAuth({
 const SPREADSHEET_ID = '1BautXMmoDytrZnOBh0m_mQ7Fc0_ZvMc2Lq-tvgkhCic'
 
 export default async function handler(req, res) {
+  console.log('KEY存在:', !!process.env.GOOGLE_SERVICE_ACCOUNT_KEY)
+  console.log('KEY前10字:', process.env.GOOGLE_SERVICE_ACCOUNT_KEY?.substring(0, 10))
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
