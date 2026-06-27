@@ -240,7 +240,7 @@ const RSVP = () => {
             </div>
             {joinStatus === 'yes' && (<>
               <div className="form-group">
-                <label htmlFor="statistics">1. 參加人數<br /> Guest Count</label>
+                <label htmlFor="statistics">1. 參加人數<br/> Guest Count</label>
                 <Controller
                   control={control}
                   name="statistics"
@@ -261,14 +261,15 @@ const RSVP = () => {
                 )}
               </div>
               <div className="form-group">
-                <label htmlFor="email">2. Email <br /> (詳細活動於婚禮前1個月email通知) <br className="en" />Detailed event information will be sent via email one month before the wedding.</label>
+                <label htmlFor="email">2. Email <br /> (詳細活動於婚禮前1個月email通知) <br />Detailed event information will be sent via email one month before the wedding.</label>
                 <input type="text" id="email" placeholder="請填寫您的Email" {...register('email', {
                   required: '請填寫您的Email'
                 })} />
                 <span>{errors.email ? errors.email.message : ''}</span>
               </div>
               <div className="form-group">
-                <div>3. 抵達峇里島的時間＆航班資訊 <br />Arrival Information</div>
+                <div>3. 抵達峇里島的時間(安排接駁車用)
+                  <br />Arrival Information</div>
                 <div className="flight-group">
                   <div className="form-field">
                     <label htmlFor="arrivalDate">抵達日期 <br />Arrival Date</label>
@@ -333,7 +334,8 @@ const RSVP = () => {
                 </div>
               </div>
               <div className="form-group">
-                <div>4. 離開峇里島的時間＆航班資訊<br />Departure Information</div>
+                <div>4. 離開峇里島的時間(安排接駁車用)
+                  <br />Departure Information</div>
                 <div className="flight-group">
                   <div className="form-field">
                     <label htmlFor="departureDate">離開日期<br />Departure Date</label>
@@ -434,8 +436,8 @@ const RSVP = () => {
               </div>
               <div className="form-group">
                 <div>7. 1/24在婚禮開始之前，我們誠摯邀請您依照自己的步調，感受貝都古高地的自然之美(請擇一)
+                  <br />Before the wedding celebration, we invite you to enjoy the beauty of Bedugul at your own pace.
                 </div>
-                <div className="en">On January 24, prior to the wedding ceremony, we warmly invite you to explore the natural beauty of the Bedugul highlands at your own pace. Please choose one of the following options:</div>
                 <div className="checkbox-group">
                   <div>
                     <input type="radio" className="checkbox" id="aJourney" value="A" {...register('journeyStatus')} />
@@ -448,26 +450,42 @@ const RSVP = () => {
                 </div>
                 <div className="tour-custom">
                   <div className="tour a">
-                    A 行程 <br />
-                    <span className="en" style={{ display: 'block', color: 'white' }}>A. Resort Day</span>
-                    在度假村享受愜意時光，體驗度假村提供的設施、活動與餐飲服務。<br />
-                    <span className="en" style={{ display: 'block', color: 'white' }}>Enjoy a relaxing day at the resort, and make the most of its facilities, activities, and dining services.</span>
+                    A 行程 Relax at the Resort<br />
+                    在度假村享受愜意時光，體驗度假村提供的設施、活動與餐飲服務。
+                    請注意，度假村內的活動與餐飲皆為自由參加，相關費用需自行負擔。部分活動可能需要提前預約。
+                    <br />
+                    <span className="" style={{ marginTop: '0.5rem', fontSize: '15px', display: 'block', lineHeight: '1.3', color: '#F4EFEA' }}>Spend a leisurely day at HOMM Saranam Baturiti and enjoy the facilities, activities, and lunch options available at the resort.
+                      Please note that resort activities and meals are optional and will be at your own expense. Advance reservations may be required for certain activities.
+                    </span>
 
                     <a href='https://www.hommhotels.com/hotels/homm-saranam-baturiti#offers-linked' target="_blank" rel="noreferrer" className="tour-link">
-                      更多資訊 Learn More <i className="bi bi-chevron-right"></i>
+                      更多資訊 For more information<i className="bi bi-chevron-right"></i>
                     </a>
                   </div>
                   <div className="tour b">
-                    B 行程
-                    <span className="en" style={{ display: 'block', color: 'white' }}>B. Exploration Day</span>
-                    造訪貝都古周邊最具代表性的景點與在地體驗
-                    <span className="en" style={{ display: 'block', color: 'white' }}>Explore some of Bedugul’s most iconic attractions and local experiences.</span>
+                    B 行程 Discover Bedugul<br />
+                    探索貝都古最具代表性的景點與在地體驗：
                     <ul>
-                      <li>草莓農園(Strawberry Farms)</li>
-                      <li>烏倫達努布拉坦寺(Ulun Danu Beratan Temple)與布拉坦湖(Bratan lake)</li>
-                      <li>峇里植物園(Bali Botanical Garden)</li>
-                      <li>峇里農場莊園(Bali Farm House)</li>
+                      <li>草莓農園</li>
+                      <li>烏倫達努布拉坦寺與布拉坦湖</li>
+                      <li>峇里植物園</li>
+                      <li>峇里農場莊園</li>
                     </ul>
+                    <div>
+                      若您有興趣參加，我們將協助安排交通及行程預訂。每位賓客酌收現金 NTD 1,000，費用包含交通接駁、景點門票及午餐。
+                      此為自由參加行程，適合希望在婚禮開始前探索貝都古的賓客。行程結束後，將返回度假村，準時參加婚禮儀式與晚宴。
+                    </div><br />
+                    Explore some of Bedugul's most popular attractions and local experiences：
+                    <ul>
+                      <li>Strawberry Farms</li>
+                      <li>Ulun Danu Beratan Temple & Lake</li>
+                      <li>Bali Botanical Garden</li>
+                      <li> Bali Farm House</li>
+                    </ul>
+                    <div>
+                      We will be happy to arrange transportation and coordinate the excursion for guests who would like to join. A contribution of NTD 1,000 cash per guest will cover transportation, attraction entrance fees, and lunch during the excursion.
+                      This optional excursion is designed for guests who would like to explore Bedugul before returning to the resort in time for the wedding ceremony and reception.
+                    </div>
                   </div>
                   <div className="content">無論您選擇在度假村放鬆休憩，或是探索周邊風景，我們都希望您能盡情享受留下美好的回憶</div>
                   <div className="en content">Whether you choose to unwind at the resort or explore the surrounding area, we hope you enjoy a memorable and wonderful experience.</div>

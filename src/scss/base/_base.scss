@@ -55,7 +55,7 @@ p,
 label {
   font-size: 1rem;
   line-height: 1.8;
-  font-family: $font-zh-sans;
+  font-family:$font-en-body,$font-zh-sans;
 }
 
 label {
@@ -105,6 +105,9 @@ textarea {
 
 .color-sage {
   background-color: $color-sage;
+}
+.color-blue{
+  background-color: $color-blue;
 }
 
 .content-section {
@@ -267,5 +270,8 @@ i {
 
   i {
     color: $color-gold;
+  }
+  label{
+    font-family:$font-en-body,$font-zh-sans;
   }
 }

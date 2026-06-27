@@ -16,6 +16,10 @@ const DressGuide = () => {
       color: '霧藍色',
       colorChart: 'color-mist-blue',
     },
+    {
+      color: '深藍色',
+      colorChart: 'color-blue',
+    },
   ]
 
   return (<>
@@ -32,7 +36,7 @@ const DressGuide = () => {
         {colorData.map((item, index) => {
           return (<div key={index}>
             <div className={`colorChart ${item.colorChart}`}></div>
-            <div>{item.color}</div>
+            <div className="title">{item.color}</div>
           </div>)
         })}
       </div>

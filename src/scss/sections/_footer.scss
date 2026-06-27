@@ -80,6 +80,7 @@
   .footer-content {
     font-size: 1rem;
     font-weight: 500;
+    font-family: $font-en-body;
     margin-bottom: 0.5rem;
     color: $color-oxblood;
   }
@@ -111,7 +112,7 @@
 
 .wedding-footer-bar {
   width: 100%;
-  background-color: #661e2a;
+  background-color: $color-burgundy;
   padding: 0.6rem 1rem 0.6rem 1rem; 
   display: flex;
   flex-direction: column;

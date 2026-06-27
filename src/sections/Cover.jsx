@@ -37,7 +37,7 @@ const Cover = ({ onOpen, onPlay, onReady, gusetName }) => {
             <h2>{`親愛的${gusetName}`}</h2>
             <h4>誠摯邀請您一同參與我們的婚禮</h4>
             <button type="button" className="cover-btn" onClick={handleOpen}>
-              Open Invitation
+              Open Invitation <p className="color">打開邀請函</p>
             </button>
           </div>
         </div>
@@ -53,7 +53,7 @@ const Cover = ({ onOpen, onPlay, onReady, gusetName }) => {
         <div className="cover-btn-wrapper">
           <h2>{`親愛的${gusetName}`}</h2>
           <h4>誠摯邀請您一同參與我們的婚禮</h4>
-          <button type="button" className="cover-btn" onClick={handleOpen}>Open Invitation</button>
+          <button type="button" className="cover-btn" onClick={handleOpen}>Open Invitation <p className="color">打開邀請函</p></button>
         </div>
       </>)}
     </div>
