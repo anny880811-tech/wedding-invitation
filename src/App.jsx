@@ -21,7 +21,7 @@ function App() {
   const audioRef = useRef(null)
   const { guestId } = useParams()
   const guestName = guestId ? guestList[guestId] : null
-  const displayName = guestName ?? '家人朋友'
+  const displayName = guestName ?? '賓客'
   const handleOpen = () => {
     setIsOpen(true)
     setPlaying(true)
