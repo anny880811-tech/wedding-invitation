@@ -473,7 +473,8 @@ const RSVP = () => {
                     </ul>
                     <div>
                       若您有興趣參加，我們將協助安排交通及行程預訂。每位賓客酌收現金 NTD 1,000，費用包含交通接駁、景點門票及午餐。
-                      此為自由參加行程，適合希望在婚禮開始前探索貝都古的賓客。行程結束後，將返回度假村，準時參加婚禮儀式與晚宴。
+                      此為自由參加行程，適合希望在婚禮開始前探索貝都古的賓客。行程結束後，將返回度假村，準時參加婚禮儀式與晚宴，以上行程的景點先讓各位參考，最終行程會以email方式提前告知
+。
                     </div><br />
                     Explore some of Bedugul's most popular attractions and local experiences：
                     <ul>
@@ -484,7 +485,8 @@ const RSVP = () => {
                     </ul>
                     <div>
                       We will be happy to arrange transportation and coordinate the excursion for guests who would like to join. A contribution of NTD 1,000 cash per guest will cover transportation, attraction entrance fees, and lunch during the excursion.
-                      This optional excursion is designed for guests who would like to explore Bedugul before returning to the resort in time for the wedding ceremony and reception.
+                      This optional excursion is designed for guests who would like to explore Bedugul before returning to the resort in time for the wedding ceremony and reception, The above itinerary is for reference only. The final itinerary will be provided via email in advance.
+.
                     </div>
                   </div>
                   <div className="content">無論您選擇在度假村放鬆休憩，或是探索周邊風景，我們都希望您能盡情享受留下美好的回憶</div>

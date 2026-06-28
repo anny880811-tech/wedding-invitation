@@ -6,7 +6,8 @@ const TravelGuide = () => {
       icons: <FileText size={30} />,
       title: '簽證申辦',
       enTitle: 'Visa Application',
-      content: [`於抵達峇里島前2天申請，需上傳護照及大頭照，護照有效期限至少大於6個月，需有回程機票與飯店資訊，每個團體可由一位代表填寫所有人的資訊，簽證費用為IDR 500,000`, `最後會收到EVOA電子檔，記得把檔案存起來`,
+      content: [`於抵達峇里島前2天申請，需上傳護照及大頭照，護照有效期限至少大於6個月，需有回程機票與飯店資訊，每個團體可由一位代表填寫所有人的資訊，簽證費用為IDR 500,000，約為台幣900元(以付款當下匯率計算)
+`, `最後會收到EVOA電子檔，記得把檔案存起來`,
         'Apply within 2 days before arrival in Bali. You will need to upload your passport and a passport photo. Your passport must be valid for at least 6 months, and you must have a return flight ticket and hotel information. One representative per group may complete the application for all travelers. The visa fee is IDR 500,000.',
         'You will receive an EVOA electronic document upon approval. Please remember to save it.'
       ],
@@ -45,7 +46,7 @@ const TravelGuide = () => {
       icons: <Wallet size={30} />,
       title: '旅遊觀光稅',
       enTitle: 'Tourism Levy',
-      content: ['每個團體可由一位代表填寫所有人的資訊，費用為IDR 150,000', 'One representative per group may complete the application for all travelers. The fee is IDR 150,000.'],
+      content: ['每個團體可由一位代表填寫所有人的資訊，費用為IDR 150,000，約為台幣270元(以付款當下匯率計算)', 'One representative per group may complete the application for all travelers. The fee is IDR 150,000.'],
       btn: [
         {
           text: '旅遊觀光稅網站',
