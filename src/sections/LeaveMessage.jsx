@@ -48,7 +48,7 @@ const LeaveMessage = () => {
       const res = await axios.post(messageUrl, form)
       setWishData(prev => [...prev, [form.name, form.wishes]]);
       setForm({ name: '', wishes: '' })
-      console.log('成功', res.data);
+      // console.log('成功', res.data);
     } catch (error) {
       console.error('送出失敗', error);
     } finally {
